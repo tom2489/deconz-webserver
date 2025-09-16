@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100mm"
+   height="179.81799mm"
+   viewBox="0 0 377.95276 679.62704"
+   version="1.1"
+   id="svg34"
+   sodipodi:docname="switch-on.svg"
+   inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview34"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.37090637"
+     inkscape:cx="1052.8263"
+     inkscape:cy="385.54204"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg34"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs33">
+    <radialGradient
+       id="radial-pattern-0"
+       gradientUnits="userSpaceOnUse"
+       cx="0"
+       cy="0"
+       fx="0"
+       fy="0"
+       r="2092.1599"
+       gradientTransform="matrix(1.199999,0,0,0.800001,1500,1000)">
+      <stop
+         offset="0"
+         stop-color="rgb(100%, 100%, 100%)"
+         stop-opacity="1"
+         id="stop1" />
+      <stop
+         offset="0.5"
+         stop-color="rgb(100%, 100%, 100%)"
+         stop-opacity="1"
+         id="stop2" />
+      <stop
+         offset="0.5625"
+         stop-color="rgb(99.822998%, 99.942017%, 99.987793%)"
+         stop-opacity="1"
+         id="stop3" />
+      <stop
+         offset="0.589844"
+         stop-color="rgb(99.578857%, 99.864197%, 99.972534%)"
+         stop-opacity="1"
+         id="stop4" />
+      <stop
+         offset="0.640625"
+         stop-color="rgb(99.365234%, 99.794006%, 99.946594%)"
+         stop-opacity="1"
+         id="stop5" />
+      <stop
+         offset="0.648438"
+         stop-color="rgb(99.215698%, 99.737549%, 99.766541%)"
+         stop-opacity="1"
+         id="stop6" />
+      <stop
+         offset="0.65625"
+         stop-color="rgb(99.205017%, 99.591064%, 99.520874%)"
+         stop-opacity="1"
+         id="stop7" />
+      <stop
+         offset="0.664062"
+         stop-color="rgb(99.043274%, 99.346924%, 99.40033%)"
+         stop-opacity="1"
+         id="stop8" />
+      <stop
+         offset="0.683594"
+         stop-color="rgb(98.843384%, 99.21875%, 99.195862%)"
+         stop-opacity="1"
+         id="stop9" />
+      <stop
+         offset="0.722656"
+         stop-color="rgb(98.661804%, 99.150085%, 98.989868%)"
+         stop-opacity="1"
+         id="stop10" />
+      <stop
+         offset="0.730469"
+         stop-color="rgb(98.458862%, 98.989868%, 98.907471%)"
+         stop-opacity="1"
+         id="stop11" />
+      <stop
+         offset="0.738281"
+         stop-color="rgb(98.382568%, 98.774719%, 98.815918%)"
+         stop-opacity="1"
+         id="stop12" />
+      <stop
+         offset="0.769531"
+         stop-color="rgb(98.374939%, 98.675537%, 98.735046%)"
+         stop-opacity="1"
+         id="stop13" />
+      <stop
+         offset="0.773438"
+         stop-color="rgb(98.291016%, 98.640442%, 98.536682%)"
+         stop-opacity="1"
+         id="stop14" />
+      <stop
+         offset="0.785156"
+         stop-color="rgb(98.088074%, 98.443604%, 98.310852%)"
+         stop-opacity="1"
+         id="stop15" />
+      <stop
+         offset="0.796875"
+         stop-color="rgb(97.961426%, 98.213196%, 98.217773%)"
+         stop-opacity="1"
+         id="stop16" />
+      <stop
+         offset="0.820312"
+         stop-color="rgb(97.956848%, 98.146057%, 98.188782%)"
+         stop-opacity="1"
+         id="stop17" />
+      <stop
+         offset="0.828125"
+         stop-color="rgb(97.807312%, 98.100281%, 98.179626%)"
+         stop-opacity="1"
+         id="stop18" />
+      <stop
+         offset="0.835938"
+         stop-color="rgb(97.613525%, 98.033142%, 98.05603%)"
+         stop-opacity="1"
+         id="stop19" />
+      <stop
+         offset="0.84375"
+         stop-color="rgb(97.557068%, 97.886658%, 97.805786%)"
+         stop-opacity="1"
+         id="stop20" />
+      <stop
+         offset="0.863281"
+         stop-color="rgb(97.45636%, 97.660828%, 97.633362%)"
+         stop-opacity="1"
+         id="stop21" />
+      <stop
+         offset="0.871094"
+         stop-color="rgb(97.254944%, 97.528076%, 97.590637%)"
+         stop-opacity="1"
+         id="stop22" />
+      <stop
+         offset="0.886719"
+         stop-color="rgb(97.084045%, 97.47467%, 97.581482%)"
+         stop-opacity="1"
+         id="stop23" />
+      <stop
+         offset="0.898438"
+         stop-color="rgb(96.890259%, 97.409058%, 97.463989%)"
+         stop-opacity="1"
+         id="stop24" />
+      <stop
+         offset="0.910156"
+         stop-color="rgb(96.630859%, 97.203064%, 97.206116%)"
+         stop-opacity="1"
+         id="stop25" />
+      <stop
+         offset="0.929688"
+         stop-color="rgb(96.421814%, 96.94519%, 97.024536%)"
+         stop-opacity="1"
+         id="stop26" />
+      <stop
+         offset="0.945312"
+         stop-color="rgb(96.340942%, 96.842957%, 96.894836%)"
+         stop-opacity="1"
+         id="stop27" />
+      <stop
+         offset="0.957031"
+         stop-color="rgb(96.282959%, 96.813965%, 96.70105%)"
+         stop-opacity="1"
+         id="stop28" />
+      <stop
+         offset="0.964844"
+         stop-color="rgb(96.087646%, 96.748352%, 96.591187%)"
+         stop-opacity="1"
+         id="stop29" />
+      <stop
+         offset="0.980469"
+         stop-color="rgb(95.941162%, 96.560669%, 96.51947%)"
+         stop-opacity="1"
+         id="stop30" />
+      <stop
+         offset="0.988281"
+         stop-color="rgb(95.928955%, 96.366882%, 96.400452%)"
+         stop-opacity="1"
+         id="stop31" />
+      <stop
+         offset="0.992188"
+         stop-color="rgb(95.925903%, 96.313477%, 96.18988%)"
+         stop-opacity="1"
+         id="stop32" />
+      <stop
+         offset="1"
+         stop-color="rgb(95.925903%, 96.305847%, 96.032715%)"
+         stop-opacity="1"
+         id="stop33" />
+    </radialGradient>
+  </defs>
+  <g
+     id="g2"
+     transform="matrix(1.0888847,0,0,1.0645793,-1254.7327,-62.432761)">
+    <rect
+       style="opacity:1;fill:#fae508;fill-opacity:1;stroke:none;stroke-width:9.37401;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect2"
+       width="263.26083"
+       height="546.62225"
+       x="1194.23"
+       y="104.53418"
+       rx="15.681393"
+       ry="17.434402" />
+    <rect
+       style="opacity:1;fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:11.3386;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect1"
+       width="335.76208"
+       height="627.06158"
+       x="1157.9794"
+       y="64.314514"
+       rx="20"
+       ry="20" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:11.3386;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 1247.0021,565.48146 h 151.1228"
+       id="path1" />
+  </g>
+</svg>
