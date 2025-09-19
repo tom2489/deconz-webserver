@@ -1,9 +1,12 @@
 <script setup>
+  import { useI18n } from 'vue-i18n';
   import { watch, onUnmounted } from 'vue';
   import { useLightsStore } from './stores/deconz-store';
   import { useAuthStore } from '@/stores/auth';
   import { ref } from 'vue';
   import { useRoute, useRouter, RouterLink } from 'vue-router';
+
+  const { t, locale } = useI18n();
 
   const route = useRoute();
   const router = useRouter();
@@ -98,11 +101,29 @@
 
       <v-app-bar :elevation="2">
         <v-app-bar-nav-icon @click="drawer = !drawer" />
-        <v-app-bar-title>Application Bar</v-app-bar-title>
+        <v-app-bar-title>Deconz Webserver</v-app-bar-title>
 
         <v-spacer />
 
-        <v-btn color="error" text @click="handleLogout">Logout</v-btn>
+        <v-menu offset-y>
+          <template #activator="{ props }">
+            <v-btn icon v-bind="props">
+              <v-icon>mdi-earth</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item @click="locale = 'en'">
+              <v-list-item-title>🇺🇸 English</v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="locale = 'de'">
+              <v-list-item-title>🇩🇪 Deutsch</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+
+        <v-btn icon color="error" @click="handleLogout">
+          <v-icon>mdi-logout</v-icon>
+        </v-btn>
       </v-app-bar>
     </template>
 
