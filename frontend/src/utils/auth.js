@@ -11,11 +11,6 @@ export function getTokenExpiration(token) {
   }
 }
 
-export function isTokenExpired(token) {
-  const exp = getTokenExpiration(token);
-  return !exp || Date.now() >= exp;
-}
-
 export function scheduleAutoLogout(router) {
   const authStore = useAuthStore();
   const token = authStore.token;
@@ -29,12 +24,12 @@ export function scheduleAutoLogout(router) {
 
   if (exp <= now) {
     authStore.logout();
-    router.push({ name: 'login' });
+    router.push({ name: 'Login' });
   } else {
     const timeout = exp - now;
     setTimeout(() => {
       authStore.logout();
-      router.push({ name: 'login' });
+      router.push({ name: 'Login' });
     }, timeout);
   }
 }

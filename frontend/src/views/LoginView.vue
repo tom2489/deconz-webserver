@@ -14,7 +14,7 @@
   async function handleLogin() {
     try {
       await authStore.login(username.value, password.value);
-      router.push('/home');
+      router.push({ name: 'Home' });
     } catch (err) {
       alert(err.response?.data?.error || 'Login failed');
     }

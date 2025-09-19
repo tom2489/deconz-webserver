@@ -1,16 +1,47 @@
 <script setup>
-  import { reactive, ref } from 'vue';
-  import { useLightsStore } from '../stores/deconz-store';
-  import { storeToRefs } from 'pinia';
-  import lightOnIcon from '../assets/light-bulb-on.svg';
-  import lightOffIcon from '../assets/light-bulb-off.svg';
-  import switchOnIcon from '../assets/switch-on.svg';
-  import switchOffIcon from '../assets/switch-off.svg';
+import '@/assets/styles/styles.css';
+import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { renameLight } from '@/services/deconz-api';
+import { useLightsStore } from '@/stores/deconz-store';
+import switchOnIcon from '@/assets/vectors/switch-on.svg';
+import switchOffIcon from '@/assets/vectors/switch-off.svg';
+import lightOnIcon from '@/assets/vectors/light-bulb-on.svg';
+import lightOffIcon from '@/assets/vectors/light-bulb-off.svg';
 
-  const lightsStore = useLightsStore();
-  const { lights, loading, error } = storeToRefs(lightsStore);
 
-  const hoverStates = reactive({});
+const lightsStore = useLightsStore();
+const { lights, loading } = storeToRefs(lightsStore);
+
+const hoverStates = ref(new Map());
+
+const editingId = ref(null);
+const newName = ref('');
+
+function setHover(id, state) {
+  hoverStates.value.set(id, state);
+}
+
+const getIcon = (light, id) => {
+  if (hoverStates.value.get(id)) return light.state.on ? switchOnIcon : switchOffIcon;
+  return light.state.on ? lightOnIcon : lightOffIcon;
+};
+
+function startEditing(light) {
+  editingId.value = light.id;
+  newName.value = light.name;
+}
+
+async function saveName(light) {
+  if (!newName.value.trim()) return;
+  try {
+    await renameLight(light.id, newName.value.trim());
+    light.name = newName.value.trim();
+  } catch (err) {
+    console.error('Failed to rename light:', err);
+  }
+  editingId.value = null;
+}
 </script>
 
 <template>
@@ -19,56 +50,56 @@
       <v-container>
         <v-row>
           <v-col cols="12" sm="6" lg="4">
-            <v-card :loading="loading" title="Card title" subtitle="Subtitle" text="...">
+            <v-card title="Lights">
               <v-list>
-                <v-list-item v-for="(light, id) in lights" :key="id" class="d-flex align-center">
+                <v-list-item
+                  v-for="(light, id) in lights"
+                  :key="id"
+                  class="align-center"
+                  @click="lightsStore.toggleLight(light.id)"
+                  @mouseenter="setHover(id, true)"
+                  @mouseleave="setHover(id, false)"
+                >
                   <template v-slot:prepend>
-                    <v-btn
-                      icon
-                      @click="
-                        () => {
-                          console.log('clicked on', light);
-                          lightsStore.toggleLight(light.id);
-                        }
-                      "
-                      @mouseenter="hoverStates[id] = true"
-                      @mouseleave="hoverStates[id] = false"
-                    >
-                      <v-avatar color="grey-lighten-1" class="cursor-pointer">
-                        <v-img
-                          :src="
-                            hoverStates[id]
-                              ? light.state.on
-                                ? switchOnIcon
-                                : switchOffIcon
-                              : light.state.on
-                                ? lightOnIcon
-                                : lightOffIcon
-                          "
-                          max-width="24"
-                          max-height="36"
-                        />
-                      </v-avatar>
-                    </v-btn>
+                    <v-avatar color="grey-lighten-4" class="bordered-avatar" size="48">
+                      <img :src="getIcon(light, id)" width="42" height="42" />
+                    </v-avatar>
                   </template>
 
-                  <!-- Text content -->
-                  <v-list-item-content>
-                    <v-list-item-title>{{ light.name }}</v-list-item-title>
-                    <v-list-item-subtitle>{{ light.state.on ? 'On' : 'Off' }}</v-list-item-subtitle>
-                  </v-list-item-content>
+                    <template v-if="editingId === light.id">
+                      <v-text-field
+                        v-model="newName"
+                        dense
+                        hide-details
+                        autofocus
+                        @blur="saveName(light)"
+                        @keyup.enter="saveName(light)"
+                        @click.stop
+                      />
+                    </template>
+                    <template v-else>
+                      <v-list-item-title
+                        class="editable"
+                        style="cursor: text;"
+                        @click.stop="startEditing(light)"
+                      >
+                        {{ light.name }}
+                      </v-list-item-title>
+                      <v-list-item-subtitle>{{ light.state.on ? 'On' : 'Off' }}</v-list-item-subtitle>
+                    </template>
+
+                  <template v-slot:append>
+                    <v-btn
+                      icon
+                      small
+                      v-if="hoverStates.get(light.id) && editingId !== light.id"
+                      @click.stop="startEditing(light)"
+                    >
+                      <v-icon>mdi-pencil</v-icon>
+                    </v-btn>
+                  </template>
                 </v-list-item>
               </v-list>
-              <v-card-actions>
-                <v-btn>Click me</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-          <v-col cols="12" sm="6" lg="8">
-            <v-card loading title="Card title" subtitle="Subtitle" text="...">
-              <v-card-actions>
-                <v-btn>Click me</v-btn>
-              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
@@ -76,5 +107,3 @@
     </v-main>
   </v-app>
 </template>
-
-<style scoped></style>

@@ -63,6 +63,16 @@ export const setLightState = async (id, state) => {
   return response.data;
 };
 
+export const renameLight = async (id, newName) => {
+  if (!id || !newName) throw new Error('Light ID and new name are required');
+
+  const response = await axios.put(`${API_URL}/lights/${id}`, {
+    name: newName,
+  });
+
+  return response.data;
+};
+
 export const createDeconzApiKey = async (deviceType = 'my-app#frontend') => {
   const response = await axios.post(`${deconzGateway}/api`, {
     devicetype: deviceType,

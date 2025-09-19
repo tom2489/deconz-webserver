@@ -52,7 +52,7 @@
 
   function handleLogout() {
     authStore.logout();
-    router.push('/login');
+    router.push({ name: 'Login' });
   }
 </script>
 
@@ -74,9 +74,7 @@
                   "
                   style="cursor: pointer"
                 >
-                  <v-list-item-content>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  </v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-list-item>
               </template>
 
@@ -87,16 +85,12 @@
                 :component="RouterLink"
                 :to="child.to"
               >
-                <v-list-item-content>
-                  <v-list-item-title>{{ child.title }}</v-list-item-title>
-                </v-list-item-content>
+                <v-list-item-title>{{ child.title }}</v-list-item-title>
               </v-list-item>
             </v-list-group>
 
             <v-list-item v-else link :component="RouterLink" :to="item.to">
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
           </template>
         </v-list>
