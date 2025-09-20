@@ -6,22 +6,24 @@
 
   const { t } = useI18n();
 
+  const auth = useAuthStore();
   const router = useRouter();
+  const showPassword = ref(false);
 
   const username = ref('');
   const password = ref('');
-  const showPassword = ref(false);
+  const error = ref('');
 
-  const authStore = useAuthStore();
-
-  async function handleLogin() {
+  const onRegister = async () => {
+    error.value = '';
     try {
-      await authStore.login(username.value, password.value);
-      router.push({ name: 'Home' });
+      await auth.register(username.value, password.value);
+      router.push('/');
     } catch (err) {
-      alert(err.response?.data?.error || 'Login failed');
+      error.value =
+        err.response?.data?.error || err.message || 'Registration failed. Please try again.';
     }
-  }
+  };
 </script>
 
 <template>
@@ -29,7 +31,7 @@
     <v-card class="pa-8" width="400">
       <v-card-title>Login</v-card-title>
       <v-card-text>
-        <v-form @submit.prevent="handleLogin">
+        <v-form @submit.prevent="onRegister">
           <v-text-field v-model="username" :label="t('username')" outlined dense required />
           <v-text-field
             v-model="password"
@@ -41,15 +43,10 @@
             :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
             @click:append-inner="showPassword = !showPassword"
           />
-          <v-btn type="submit" block color="primary" class="mt-4">Login</v-btn>
-        </v-form>
+          <v-alert v-if="error" type="error" dense class="mt-2">{{ error }}</v-alert>
 
-        <div class="mt-4 text-center">
-          <span>{{ t('dont have an account?') }}</span>
-          <router-link :to="{ name: 'Register' }" class="text-decoration-underline text-primary">
-            {{ t('register here') }}
-          </router-link>
-        </div>
+          <v-btn type="submit" block color="primary" class="mt-4">{{ t('register') }}</v-btn>
+        </v-form>
       </v-card-text>
     </v-card>
   </v-container>

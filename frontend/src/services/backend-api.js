@@ -17,8 +17,28 @@ export const login = async (username, password) => {
   return response.data;
 };
 
-export const register = async (username, password, role = 'user') => {
-  const response = await backendApi.post('/auth/register', { username, password, role });
+export const register = async (username, password, roles = ['user']) => {
+  const response = await backendApi.post('/auth/register', { username, password, roles });
+  return response.data;
+};
+
+export const getAllUsers = async () => {
+  const response = await backendApi.get('/users');
+  return response.data.users;
+};
+
+export const deleteUser = async (userId) => {
+  const response = await backendApi.delete(`/users/${userId}`);
+  return response.data;
+};
+
+export const updateUserRoles = async (userId, roles) => {
+  const response = await backendApi.put(`/users/${userId}/roles`, { roles });
+  return response.data;
+};
+
+export const removeUserRole = async (userId, role) => {
+  const response = await backendApi.delete(`/users/${userId}/roles/${role}`);
   return response.data;
 };
 

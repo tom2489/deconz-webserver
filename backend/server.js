@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { openDb } from './db.js';
+import { openDb } from './db/db.js'
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 
@@ -22,7 +22,7 @@ app.listen(PORT, async () => {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT UNIQUE,
     password TEXT,
-    role TEXT
+    roles TEXT
   )`);
   console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -1,10 +1,13 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/AboutView.vue';
-import LoginView from '../views/LoginView.vue';
-import AutomationView from '../views/AutomationView.vue';
-import SettingsDeconzApiKeyView from '../views/SettingsDeconzApiKeyView.vue';
+import axios from 'axios';
 import { useAuthStore } from '@/stores/auth';
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '@/views/HomeView.vue';
+import AboutView from '@/views/AboutView.vue';
+import LoginView from '@/views/LoginView.vue';
+import RegisterView from '@/views/RegisterView.vue';
+import AutomationView from '@/views/AutomationView.vue';
+import SettingsDeconzApiKeyView from '@/views/SettingsDeconzApiKeyView.vue';
+import SettingsUserManagementView from '@/views/SettingsUserManagementView.vue';
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -13,6 +16,13 @@ const routes = [
     name: 'Login',
     component: LoginView,
     meta: { title: 'Login' },
+  },
+
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterView,
+    meta: { title: 'Register' },
   },
   {
     path: '/home',
@@ -38,6 +48,12 @@ const routes = [
     component: SettingsDeconzApiKeyView,
     meta: { title: 'SettingsDeconzApiKey' },
   },
+  {
+    path: '/settings/user-management',
+    name: 'SettingsUserManagement',
+    component: SettingsUserManagementView,
+    meta: { title: 'SettingsUserManagement' },
+  },
 ];
 
 const router = createRouter({
@@ -45,10 +61,24 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
   const publicPages = ['/login', '/register'];
   const authRequired = !publicPages.includes(to.path);
+
+  let usersExist = true;
+  if (to.path !== '/register') {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/exists`);
+      usersExist = res.data.usersExist;
+    } catch (err) {
+      console.error('Failed to check users existence:', err);
+    }
+
+    if (!usersExist) {
+      return next('/register');
+    }
+  }
 
   if (authStore.isAuthenticated && publicPages.includes(to.path)) {
     return next('/home');
@@ -60,5 +90,4 @@ router.beforeEach((to, from, next) => {
 
   next();
 });
-
 export default router;

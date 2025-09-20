@@ -1,4 +1,9 @@
 {
+  "username": "Benutzername",
+  "password": "Passwort",
+  "dont have an account?": "Hast Du noch kein Benutzerkonto?",
+  "register here": "Registriere dich hier",
+  "register": "Registrieren",
   "lights": "Lichter",
   "on": "An",
   "off": "Aus"

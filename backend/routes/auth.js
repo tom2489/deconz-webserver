@@ -1,51 +1,42 @@
 import express from 'express';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import { openDb } from '../db.js';
 import dotenv from 'dotenv';
+import { loginUser, registerUser } from '../services/auth.js';
 dotenv.config();
 
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
-  const { username, password, role } = req.body;
+  try {
+    const { username, password, roles } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).json({ error: 'Username and password are required' });
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Username and password are required' });
+    }
+
+    const result = await registerUser(username, password, roles || []);
+    res.json(result);
+  } catch (err) {
+    console.error('Registration error:', err);
+
+    if (err.message.includes('UNIQUE constraint failed')) {
+      return res.status(400).json({ error: 'Username already exists' });
+    }
+
+    res.status(500).json({ error: 'Internal server error' });
   }
-
-  const db = await openDb();
-
-  const existing = await db.get('SELECT id FROM users WHERE username = ?', username);
-  if (existing) {
-    return res.status(400).json({ error: 'Username already taken' });
-  }
-
-  const password_hash = await bcrypt.hash(password, 10);
-
-  const result = await db.run(
-    'INSERT INTO users (username, password, role) VALUES (?, ?, ?)',
-    username,
-    password_hash,
-    role || 'user'
-  );
-
-  res.status(201).json({ id: result.lastID, username, role: role || 'user' });
 });
+
 
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  const db = await openDb();
-  const user = await db.get('SELECT * FROM users WHERE username = ?', username);
-  if (!user) return res.status(400).json({ error: 'User not found' });
-
-  const valid = await bcrypt.compare(password, user.password);
-  if (!valid) return res.status(400).json({ error: 'Invalid password' });
-
-  const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
-    expiresIn: '8h',
-  });
-  res.json({ token, user: { id: user.id, username: user.username, role: user.role } });
+  try {
+    const { username, password } = req.body;
+    const result = await loginUser(username, password);
+    res.json(result);
+  } catch (err) {
+    const status = err.message === 'User not found' || err.message === 'Invalid password' ? 400 : 500;
+    res.status(status).json({ error: err.message });
+  }
 });
+
 
 export default router;

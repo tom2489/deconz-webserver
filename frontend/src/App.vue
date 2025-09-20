@@ -1,6 +1,6 @@
 <script setup>
   import { useI18n } from 'vue-i18n';
-  import { watch, onUnmounted } from 'vue';
+  import { computed, watch, onUnmounted } from 'vue';
   import { useLightsStore } from './stores/deconz-store';
   import { useAuthStore } from '@/stores/auth';
   import { ref } from 'vue';
@@ -42,16 +42,21 @@
     lightsStore.stopPolling();
   });
 
-  const items = [
+  const items = computed(() => [
     { title: 'Home', to: { name: 'Home' } },
     { title: 'Automation', to: { name: 'Automation' } },
     {
       title: 'Settings',
       to: { name: 'SettingsDeconzApiKey' },
-      children: [{ title: 'Deconz API Key', to: { name: 'SettingsDeconzApiKey' } }],
+      children: [
+        { title: 'Deconz API Key', to: { name: 'SettingsDeconzApiKey' } },
+        ...(authStore.hasAnyRole(['admin'])
+          ? [{ title: 'User Management', to: { name: 'SettingsUserManagement' } }]
+          : []),
+      ],
     },
     { title: 'About', to: { name: 'About' } },
-  ];
+  ]);
 
   function handleLogout() {
     authStore.logout();
@@ -61,71 +66,70 @@
 
 <template>
   <v-app>
-    <template v-if="authStore.isAuthenticated">
-      <v-navigation-drawer v-model="drawer" variant="permanent">
-        <v-list nav>
-          <template v-for="item in items" :key="item.title">
-            <v-list-group v-if="item.children" v-model="settingsOpen" no-action>
-              <template #activator>
-                <v-list-item
-                  link
-                  :component="RouterLink"
-                  :to="item.to"
-                  @click.stop="
-                    settingsOpen = !settingsOpen;
-                    console.log('Settings toggled', settingsOpen);
-                  "
-                  style="cursor: pointer"
-                >
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item>
-              </template>
-
+    <v-navigation-drawer v-if="authStore.isAuthenticated" v-model="drawer" variant="permanent">
+      <v-list nav>
+        <template v-for="item in items" :key="item.title">
+          <v-list-group v-if="item.children" v-model="settingsOpen" no-action>
+            <template #activator>
               <v-list-item
-                v-for="child in item.children"
-                :key="child.title"
                 link
                 :component="RouterLink"
-                :to="child.to"
+                :to="item.to"
+                @click.stop="
+                  settingsOpen = !settingsOpen;
+                  console.log('Settings toggled', authStore.hasAnyRole(['admin']));
+                "
+                style="cursor: pointer"
               >
-                <v-list-item-title>{{ child.title }}</v-list-item-title>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
-            </v-list-group>
+            </template>
 
-            <v-list-item v-else link :component="RouterLink" :to="item.to">
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item
+              v-for="child in item.children"
+              :key="child.title"
+              link
+              :component="RouterLink"
+              :to="child.to"
+            >
+              <v-list-item-title>{{ child.title }}</v-list-item-title>
             </v-list-item>
-          </template>
+          </v-list-group>
+
+          <v-list-item v-else link :component="RouterLink" :to="item.to">
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </template>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar :elevation="2">
+      <v-app-bar-nav-icon v-if="authStore.isAuthenticated" @click="drawer = !drawer" />
+
+      <v-app-bar-title>Deconz Webserver</v-app-bar-title>
+
+      <v-spacer />
+
+      <v-menu offset-y>
+        <template #activator="{ props }">
+          <v-btn icon v-bind="props">
+            <v-icon>mdi-earth</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item @click="locale = 'en'">
+            <v-list-item-title>🇺🇸 English</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="locale = 'de'">
+            <v-list-item-title>🇩🇪 Deutsch</v-list-item-title>
+          </v-list-item>
         </v-list>
-      </v-navigation-drawer>
+      </v-menu>
 
-      <v-app-bar :elevation="2">
-        <v-app-bar-nav-icon @click="drawer = !drawer" />
-        <v-app-bar-title>Deconz Webserver</v-app-bar-title>
-
-        <v-spacer />
-
-        <v-menu offset-y>
-          <template #activator="{ props }">
-            <v-btn icon v-bind="props">
-              <v-icon>mdi-earth</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-item @click="locale = 'en'">
-              <v-list-item-title>🇺🇸 English</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="locale = 'de'">
-              <v-list-item-title>🇩🇪 Deutsch</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-
-        <v-btn icon color="error" @click="handleLogout">
-          <v-icon>mdi-logout</v-icon>
-        </v-btn>
-      </v-app-bar>
-    </template>
+      <v-btn v-if="authStore.isAuthenticated" icon color="error" @click="handleLogout">
+        <v-icon>mdi-logout</v-icon>
+      </v-btn>
+    </v-app-bar>
 
     <v-main class="d-flex align-center justify-center" style="min-height: 100vh">
       <router-view />

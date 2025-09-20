@@ -1,4 +1,9 @@
 {
+  "username": "Username",
+  "password": "Password",
+  "dont have an account?": "Don't have an account?",
+  "register here": "Register here",
+  "register": "Register",
   "lights": "Lights",
   "on": "On",
   "off": "Off"
