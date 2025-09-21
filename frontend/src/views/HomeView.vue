@@ -51,7 +51,7 @@
     <v-main class="d-flex align-center justify-center" style="height: 600px">
       <v-container>
         <v-row>
-          <v-col cols="12" sm="6" lg="4">
+          <v-col cols="12" sm="6" lg="4" v-if="lights && Object.keys(lights).length > 0">
             <v-card>
               <v-card-title>{{ t('lights') }}</v-card-title>
               <v-list>

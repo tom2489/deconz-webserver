@@ -7,3 +7,4 @@ Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://
 # Todo:
 
 - Update the express webserver in order to run over https .. then password is no longer just plaintext
+- Do login and registering in a secure way
