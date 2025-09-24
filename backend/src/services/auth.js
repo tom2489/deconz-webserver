@@ -1,5 +1,7 @@
+import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 import { openDb } from '../db/db.js';
+import { getUserSecret } from '../db/db.js';
 import { generateJwt } from '../services/jwt.js';
 
 const SALT_ROUNDS = 10;
@@ -68,14 +70,17 @@ export async function registerUser(username, password, roles = ['user']) {
 
     const hashed = await hashPassword(password);
 
+    const userSecret = crypto.randomBytes(64).toString('hex');
+
     const { lastID: userId } = await db.run(
-      'INSERT INTO users(username, password, roles) VALUES (?, ?, ?)',
+      'INSERT INTO users(username, password, roles, jwt_secret) VALUES (?, ?, ?, ?)',
       username,
       hashed,
-      JSON.stringify(userRoles)
+      JSON.stringify(userRoles),
+      userSecret
     );
 
-    const token = generateJwt({ id: userId, username, roles: userRoles });
+    const token = generateJwt({ id: userId, username, roles: userRoles }, userSecret);
 
     return { user: { id: userId, username, roles: userRoles }, token };
   });
@@ -110,6 +115,8 @@ export async function loginUser(username, password) {
 
   const roles = parseRoles(user.roles);
 
-  const token = generateJwt({ id: user.id, username: user.username, roles });
+  const userSecret = await getUserSecret(user.id);
+
+  const token = generateJwt({ id: user.id, username: user.username, roles }, userSecret);
   return { token, user: { id: user.id, username: user.username, roles } };
 }

@@ -4,8 +4,7 @@ import {
   register as apiRegister,
   deleteUser as apiDeleteUser,
   getAllUsers,
-  updateUserRoles,
-  removeUserRole,
+  updateUserRoles
 } from '@/services/backend-api';
 
 export const useAuthStore = defineStore('auth', {
