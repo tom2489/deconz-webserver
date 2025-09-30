@@ -1,4 +1,3 @@
-// electron/main.mjs
 import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import { fork } from 'child_process';
@@ -10,6 +9,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 let backendProc = null;
+let backendPort = null;
+
+// Detect if GUI is available
+const hasGui = !!process.env.DISPLAY || !!process.env.WAYLAND_DISPLAY;
 
 // Wait until the backend is ready
 function waitForServer(port, timeout = 15000) {
@@ -35,10 +38,9 @@ function waitForServer(port, timeout = 15000) {
 async function startBackend() {
   const port = await getPort({ port: 3000 }); // tries 3000 first
 
-const backendScript = app.isPackaged
-  ? path.join(process.resourcesPath, 'backend', 'src', 'server.js') // packaged app
-  : path.join(__dirname, '..', 'backend', 'src', 'server.js');      // dev
-
+  const backendScript = app.isPackaged
+    ? path.join(process.resourcesPath, 'backend', 'src', 'server.js') // packaged app
+    : path.join(__dirname, '..', 'backend', 'src', 'server.js');      // dev
 
   backendProc = fork(backendScript, [], {
     env: { ...process.env, PORT: port, NODE_ENV: app.isPackaged ? 'production' : 'development' },
@@ -58,10 +60,8 @@ const backendScript = app.isPackaged
   return port;
 }
 
-// Create Electron window
-async function createWindow() {
-  const port = await startBackend();
-
+// Create Electron window (only if GUI exists)
+async function createWindow(port) {
   const win = new BrowserWindow({
     width: 1200,
     height: 800,
@@ -76,9 +76,20 @@ async function createWindow() {
 }
 
 // App lifecycle
-app.whenReady().then(createWindow).catch(err => {
-  console.error('Failed to create window', err);
-  app.quit();
+app.whenReady().then(async () => {
+  try {
+    backendPort = await startBackend(); // start backend once
+    if (hasGui) {
+      console.log("GUI detected — launching Electron window");
+      await createWindow(backendPort);
+    } else {
+      console.log("No GUI detected — running backend only");
+      // backend keeps running; Electron process stays alive
+    }
+  } catch (err) {
+    console.error('Failed to initialize app', err);
+    app.quit();
+  }
 });
 
 app.on('before-quit', () => {
@@ -93,5 +104,5 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  if (hasGui && BrowserWindow.getAllWindows().length === 0) createWindow(backendPort);
 });
