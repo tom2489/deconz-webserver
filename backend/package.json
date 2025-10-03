@@ -1,5 +1,5 @@
 {
-  "name": "deconz-app-backend-test",
+  "name": "deconz-webserver",
   "type": "module",
   "version": "1.0.0",
   "description": "npm init -y npm install express sqlite3 bcrypt jsonwebtoken dotenv cors npm install --save-dev nodemon",
