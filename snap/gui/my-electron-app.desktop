@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=my-electron-app
+Exec=deconz-webserver.my-electron-app
+Terminal=false
+Type=Application
+Icon=${SNAP}/meta/gui/my-electron-app.png
+StartupWMClass=my-electron-app
+Comment=Electron app with bundled backend
+Categories=Utility;
