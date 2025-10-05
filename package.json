@@ -32,11 +32,9 @@
     "asar": true,
     "extraResources": [
       {
-        "from": "backend/",
-        "to": "backend",
-        "filter": [
-          "**/*"
-        ]
+        "from": "frontend/dist/",
+        "to": "frontend/dist",
+        "filter": ["**/*"]
       }
     ],
     "files": [
