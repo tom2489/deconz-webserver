@@ -5,7 +5,9 @@
   "main": "electron/main.js",
   "type": "module",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon backend/src/server.js",
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
+    "dev:frontend": "cd frontend && NODE_ENV=development vite",
+    "dev:backend": "NODE_ENV=development node backend/src/server.js",
     "start:electron": "electron .",
     "build:frontend": "cd frontend && npm run build",
     "copy-build": "rm -rf backend/public && cp -r frontend/dist backend/public",

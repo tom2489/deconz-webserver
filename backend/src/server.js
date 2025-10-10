@@ -30,16 +30,21 @@ app.use('/users', userRoutes);
 // Health endpoint for Electron
 app.get('/_health', (req, res) => res.status(200).send('OK'));
 
-// Serve frontend build if it exists
-const publicDir = path.join(__dirname, '..', 'public');
-const indexFile = path.join(publicDir, 'index.html');
+const isDev = process.env.NODE_ENV === 'development';
 
-if (fs.existsSync(indexFile)) {
-  app.use(express.static(publicDir));
-app.use((req, res) => {
-  res.sendFile(indexFile);
-});
+// Serve frontend only in production
+if (!isDev) {
+  const publicDir = path.join(__dirname, '..', 'public');
+  const indexFile = path.join(publicDir, 'index.html');
+
+  if (fs.existsSync(indexFile)) {
+    app.use(express.static(publicDir));
+    app.use((req, res) => {
+      res.sendFile(indexFile);
+    });
+  }
 }
+
 
 // Start server
 const PORT = process.env.PORT || 3000;

@@ -11,3 +11,15 @@ How to snapcraft:
 You can unsquash the snap in order to analyze whats going on:
 
 1. `unsquashfs <snap>`
+
+
+# Keep in mind
+- Raspberry Pi Zero does not support 
+  - armv7l
+  - snaps
+  - node 14+
+  - therefore we should not focus on buidling software for this architecture
+
+
+
+sudo snappy-debug security scanlog
