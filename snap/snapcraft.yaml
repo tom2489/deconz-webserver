@@ -14,12 +14,12 @@ confinement: strict
 # platforms:
 #   amd64:
 #     build-on: [amd64]
-#   arm64:
-#     build-on: [amd64]
-#     build-for: [arm64]
-#   armhf:
-#     build-on: [amd64]
-#     build-for: [armhf]
+#     build-for: [amd64]
+
+platforms:
+  armhf:
+    build-on: [armhf]
+    build-for: [armhf]
 
 apps:
   deconz-webserver:
@@ -28,7 +28,6 @@ apps:
     restart-condition: always
     plugs:
       - network-bind
-      # - network
 
   my-electron-app:
     command: command.sh
@@ -36,17 +35,10 @@ apps:
     plugs:
       - browser-support
       - network-bind
-    #   - desktop
-    #   - desktop-legacy
-      - home   (my-electron-app:158832): IBUS-WARNING **: 20:16:18.685: open /home/tom/snap/deconz-webserver/x1/.config/ibus/bus failed: Permission denied
-    #   - x11
-    #   - wayland
-    #   - unity7
-    #   - network
-    #   - gsettings
-    #   - audio-playback
-    #   - pulseaudio
-    #   - opengl
+      - home
+      - unity7
+      - opengl
+      - bluez
     environment:
       DISABLE_WAYLAND: '1'
       PATH: $SNAP/usr/sbin:$SNAP/usr/bin:$SNAP/sbin:$SNAP/bin:$PATH
