@@ -5,6 +5,8 @@
   "description": "npm init -y npm install express sqlite3 bcrypt jsonwebtoken dotenv cors npm install --save-dev nodemon",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf node_modules dist build .cache .eslintcache *.log",
+
     "test": "cross-env NODE_ENV=test jest --detectOpenHandles --forceExit",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",

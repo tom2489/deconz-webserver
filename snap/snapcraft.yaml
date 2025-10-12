@@ -11,26 +11,26 @@ description: |
 grade: devel
 confinement: strict
 
-# platforms:
-#   amd64:
-#     build-on: [amd64]
-#     build-for: [amd64]
-
 platforms:
-  armhf:
-    build-on: [armhf]
-    build-for: [armhf]
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+
+# platforms:
+#   armhf:
+#     build-on: [armhf]
+#     build-for: [armhf]
 
 apps:
   deconz-webserver:
-    command: lib/node_modules/deconz-webserver/command.sh
+    command: backend/command.sh
     daemon: simple
     restart-condition: always
     plugs:
       - network-bind
 
   my-electron-app:
-    command: command.sh
+    command: electron/command.sh
     extensions: [gnome] 
     plugs:
       - browser-support
@@ -39,19 +39,74 @@ apps:
       - unity7
       - opengl
       - bluez
-    environment:
-      DISABLE_WAYLAND: '1'
-      PATH: $SNAP/usr/sbin:$SNAP/usr/bin:$SNAP/sbin:$SNAP/bin:$PATH
-      SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform
-      LD_LIBRARY_PATH: $SNAP_LIBRARY_PATH:$SNAP/lib:$SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH:$SNAP/lib:$SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu
+    # environment:
+    #   DISABLE_WAYLAND: '1'
+    #   PATH: $SNAP/usr/sbin:$SNAP/usr/bin:$SNAP/sbin:$SNAP/bin:$PATH
+    #   SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform
+    #   LD_LIBRARY_PATH: $SNAP_LIBRARY_PATH:$SNAP/lib:$SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH:$SNAP/lib:$SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu
 
 parts:
+  frontend:
+    plugin: nil
+    source: .
+    build-snaps:
+      - node/22/stable
+    override-build: |
+      npm run setup:frontend
+      npm run build:frontend
+
+      # Install frontend build to the part's install dir
+      mkdir -p $SNAPCRAFT_PART_INSTALL/frontend/dist
+      cp -r frontend/dist/* $SNAPCRAFT_PART_INSTALL/frontend/dist/
+
+    stage:
+    - frontend/dist
+
+
   backend:
     plugin: npm
-    source: ./backend
+    source: .
     npm-include-node: true
     npm-node-version: "22.19.0"
+    after: [frontend]
+    build-snaps:
+      - node/22/stable
+    override-build: |
+      # export PATH=/snap/bin:$PATH
+
+      # Install and build
+      npm run setup:backend
+
+      # Copy output to $SNAPCRAFT_PART_INSTALL
+      mkdir -p $SNAPCRAFT_PART_INSTALL/backend/public
+      cp -r ./backend/* $SNAPCRAFT_PART_INSTALL/backend/
+      cp -r $SNAPCRAFT_STAGE/frontend/dist/* $SNAPCRAFT_PART_INSTALL/backend/public
+
+      # In order to have node binary inside installed snap
+      craftctl default
+
 
   electron-app:
-    plugin: dump
-    source: ./dist/linux-unpacked
+    plugin: nil
+    source: .
+    after: [frontend]
+    build-snaps:
+      - node/22/stable
+    override-build: |
+      # export PATH=/snap/bin:$PATH
+
+      # Accoring to package.json (electron build section) the electron app tries to get frontend
+      # from frontend/dist folder (relatively to where package.json lies)
+      mkdir -p $CRAFT_PART_BUILD/frontend/dist
+      cp -r $SNAPCRAFT_STAGE/frontend/dist/* $CRAFT_PART_BUILD/frontend/dist
+
+      # Install and build
+      npm install
+      npm run build:electron
+
+      # Copy output to $SNAPCRAFT_PART_INSTALL
+      mkdir $SNAPCRAFT_PART_INSTALL/electron
+      cp -r ./dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/electron/
+
+      # Copy the shellscripts
+      cp -r ./electron/command-shellscripts/* $SNAPCRAFT_PART_INSTALL/electron/

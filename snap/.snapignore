@@ -1,0 +1,17 @@
+# Ignore Git metadata
+.git/
+.gitignore
+
+# Ignore IDE configs
+.vscode/
+
+# Ignore OS junk
+.DS_Store
+
+# Ignore local dependencies (reinstalled in build step)
+node_modules/
+
+# Ignore tests and docs
+tests/
+docs/
+coverage/

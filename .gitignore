@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-# dist 👉 Needed to build remotely ..
+dist
 dist-ssr
 *.local
 

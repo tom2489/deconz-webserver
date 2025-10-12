@@ -5,15 +5,27 @@
   "main": "electron/main.js",
   "type": "module",
   "scripts": {
+    "clean": "npm run clean:electron && npm run clean:backend && npm run clean:frontend",
+    "clean:electron": "rm -rf dist && rm -rf node_modules && rm -rf backend/public && rm -rf *.snap",
+    "clean:backend": "cd backend && npm run clean",
+    "clean:frontend": "cd frontend && npm run clean",
+
+    "setup": "npm run setup:electron && npm run setup:backend && npm run setup:frontend",
+    "setup:electron": "npm install",
+    "setup:backend": "cd backend && npm install",
+    "setup:frontend": "cd frontend && npm install",
+
+    "build": "npm run build:frontend && npm run cp-build:frontend && npm run build:electron",
+    "build:frontend": "cd frontend && npm run build",
+    "cp-build:frontend": "rm -rf backend/public && cp -r frontend/dist backend/public",
+    "build:electron": "electron-builder --dir",
+
     "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
     "dev:frontend": "cd frontend && NODE_ENV=development vite",
     "dev:backend": "NODE_ENV=development node backend/src/server.js",
     "start:electron": "electron .",
-    "build:frontend": "cd frontend && npm run build",
-    "copy-build": "rm -rf backend/public && cp -r frontend/dist backend/public",
-    "prepare:package": "npm run build:frontend && npm run copy-build",
-    "pack": "npm run prepare:package && electron-builder --dir",
-    "dist": "npm run prepare:package && electron-builder"
+
+    "dist": "npm run prepare:frontend && electron-builder"
   },
   "dependencies": {
     "cors": "^2.8.5",
