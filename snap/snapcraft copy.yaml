@@ -1,0 +1,92 @@
+name: deconz-webserver
+base: core24
+version: '0.1'
+summary: Single-line elevator pitch for your amazing snap
+description: |
+  This is my-snap's description. You have a paragraph or two to tell the
+  most important story about your snap. Keep it under 100 words though,
+  we live in tweetspace and your description wants to look good in the snap
+  store.
+
+grade: devel
+confinement: strict
+
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+  armhf:
+    build-on: [armhf]
+    build-for: [armhf]
+
+apps:
+  deconz-webserver:
+    command: backend/command.sh
+    daemon: simple
+    restart-condition: always
+    plugs:
+      - network-bind
+
+  my-electron-app:
+    command: electron/command.sh
+    extensions: [gnome]
+    plugs:
+      - browser-support
+      - network-bind
+      - home
+      - unity7
+      - opengl
+      - bluez
+
+parts:
+  frontend:
+    plugin: nil
+    source: .
+    build-snaps:
+      - node/22/stable
+    override-build: |
+      export CYPRESS_INSTALL_BINARY=0
+
+      npm install
+      npm run setup:frontend
+      npm run build:frontend
+
+      mkdir -p $SNAPCRAFT_PART_INSTALL/frontend/dist
+      cp -r frontend/dist/* $SNAPCRAFT_PART_INSTALL/frontend/dist/
+    stage:
+      - frontend/dist
+
+  backend:
+    plugin: nil
+    source: .
+    after: [frontend]
+    build-snaps:
+      - node/22/stable
+    override-build: |
+      npm install
+      npm run setup:backend
+
+      mkdir -p $SNAPCRAFT_PART_INSTALL/backend/public
+      cp -r ./backend/* $SNAPCRAFT_PART_INSTALL/backend/
+      cp -r $SNAPCRAFT_STAGE/frontend/dist/* $SNAPCRAFT_PART_INSTALL/backend/public
+
+      # Include Node.js binary in the snap
+      craftctl default
+
+  electron-app:
+    plugin: nil
+    source: .
+    after: [frontend]
+    build-snaps:
+      - node/22/stable
+    override-build: |
+      mkdir -p $CRAFT_PART_BUILD/frontend/dist
+      cp -r $SNAPCRAFT_STAGE/frontend/dist/* $CRAFT_PART_BUILD/frontend/dist
+
+      npm install
+      npm run build:electron
+
+      mkdir -p $SNAPCRAFT_PART_INSTALL/electron
+      cp -r ./dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/electron/
+
+      cp -r ./electron/command-shellscripts/* $SNAPCRAFT_PART_INSTALL/electron/

@@ -46,8 +46,6 @@ parts:
     build-snaps:
       - node/22/stable
     override-build: |
-      export CYPRESS_INSTALL_BINARY=0  # armhf does have an issue with cypress. So we can prevent it from being installed ..
-
       npm run setup:frontend
       npm run build:frontend
 
@@ -67,6 +65,14 @@ parts:
     after: [frontend]
     build-snaps:
       - node/22/stable
+    stage-packages:
+      - libatomic1
+    build-packages:
+      - build-essential
+      - python3
+      - python3-pip
+      - libsqlite3-dev
+      - pkg-config
     override-build: |
       # export PATH=/snap/bin:$PATH
 

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf node_modules dist .vite .cache .eslintcache && rm -f package-lock.json",
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.vue",
@@ -24,11 +24,8 @@
     "vuetify": "^3.9.7"
   },
   "devDependencies": {
-    "@cypress/vite-dev-server": "^7.0.0",
-    "@cypress/vue": "^6.0.2",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/eslint-config-prettier": "^10.2.0",
-    "cypress": "^15.2.0",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsdoc": "^60.0.0",

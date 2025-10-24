@@ -21,7 +21,7 @@
     "build:electron": "electron-builder --dir",
 
     "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
-    "dev:frontend": "cd frontend && NODE_ENV=development vite",
+    "dev:frontend": "cd frontend && NODE_ENV=development vite --host",
     "dev:backend": "NODE_ENV=development node backend/src/server.js",
     "start:electron": "electron .",
 

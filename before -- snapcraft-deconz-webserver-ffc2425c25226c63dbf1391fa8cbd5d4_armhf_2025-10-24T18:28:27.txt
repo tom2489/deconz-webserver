@@ -1,21 +1,21 @@
-https://launchpad.net/~tom-tom-tom/tom-tom-tom-craft-remote-build/+snap/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06/+build/2935651
-[Mon Oct 20 17:04:12 2025]
+https://launchpad.net/~tom-tom-tom/tom-tom-tom-craft-remote-build/+snap/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/+build/2939880
+[Fri Oct 24 15:55:36 2025]
 RUN: /usr/share/launchpad-buildd/bin/builder-prep 
-Kernel version: Linux bos03-arm64-065 6.8.0-85-generic #85-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 18 15:21:04 UTC 2025 aarch64
+Kernel version: Linux bos03-arm64-092 6.8.0-85-generic #85-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 18 15:21:04 UTC 2025 aarch64
 Buildd toolchain package versions: launchpad-buildd_259~759~ubuntu24.04.1 python3-lpbuildd_259~759~ubuntu24.04.1 sbuild_0.85.10ubuntu0.2 git-build-recipe_0.3.7 git_1:2.43.0-1ubuntu7.3 dpkg-dev_1.22.6ubuntu6.5 python3-debian_0.1.49ubuntu2.
 Syncing the system clock with the buildd NTP service...
-2025-10-20 17:04:13.452755 (+0000) -0.045345 +/- 0.082204 ntp.buildd 10.211.37.1 s2 no-leap
-[Mon Oct 20 17:04:13 2025]
-RUN: /usr/share/launchpad-buildd/bin/in-target unpack-chroot --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2935651 --image-type lxd /home/buildd/filecache-default/b2c8eb6960c82a889c929310d2d4d76c8fcb84b2
-Creating target for build SNAPBUILD-2935651
+2025-10-24 15:55:36.721431 (+0000) -0.013589 +/- 0.005827 ntp.buildd 10.211.37.1 s2 no-leap
+[Fri Oct 24 15:55:36 2025]
+RUN: /usr/share/launchpad-buildd/bin/in-target unpack-chroot --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2939880 --image-type lxd /home/buildd/filecache-default/b2c8eb6960c82a889c929310d2d4d76c8fcb84b2
+Creating target for build SNAPBUILD-2939880
 To start your first container, try: lxc launch ubuntu:24.04
 Or for a virtual machine: lxc launch ubuntu:24.04 --vm
 
 /usr/lib/python3/dist-packages/pylxd/models/operation.py:76: UserWarning: Attempted to set unknown attribute "location" on instance of "Operation"
   warnings.warn(
-[Mon Oct 20 17:04:31 2025]
-RUN: /usr/share/launchpad-buildd/bin/in-target mount-chroot --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2935651
-Starting target for build SNAPBUILD-2935651
+[Fri Oct 24 15:55:47 2025]
+RUN: /usr/share/launchpad-buildd/bin/in-target mount-chroot --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2939880
+Starting target for build SNAPBUILD-2939880
 /usr/lib/python3/dist-packages/pylxd/models/_model.py:134: UserWarning: Attempted to set unknown attribute "project" on instance of "Profile"
   warnings.warn(
 /usr/lib/python3/dist-packages/pylxd/models/operation.py:76: UserWarning: Attempted to set unknown attribute "location" on instance of "Operation"
@@ -28,36 +28,36 @@ Error: Instance is not running
 Error: Instance is not running
 Error: Instance is not running
 Error: Instance is not running
-[Mon Oct 20 17:04:49 2025]
-RUN: /usr/share/launchpad-buildd/bin/in-target override-sources-list --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2935651 'deb http://ftpmaster.internal/ubuntu noble main restricted universe multiverse' 'deb http://ftpmaster.internal/ubuntu noble-security main restricted universe multiverse' 'deb http://ftpmaster.internal/ubuntu noble-updates main restricted universe multiverse'
-Overriding sources.list in build-SNAPBUILD-2935651
+[Fri Oct 24 15:55:58 2025]
+RUN: /usr/share/launchpad-buildd/bin/in-target override-sources-list --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2939880 'deb http://ftpmaster.internal/ubuntu noble main restricted universe multiverse' 'deb http://ftpmaster.internal/ubuntu noble-security main restricted universe multiverse' 'deb http://ftpmaster.internal/ubuntu noble-updates main restricted universe multiverse'
+Overriding sources.list in build-SNAPBUILD-2939880
 /usr/lib/python3/dist-packages/pylxd/models/_model.py:134: UserWarning: Attempted to set unknown attribute "type" on instance of "Container"
   warnings.warn(
 /usr/lib/python3/dist-packages/pylxd/models/_model.py:134: UserWarning: Attempted to set unknown attribute "project" on instance of "Container"
   warnings.warn(
-[Mon Oct 20 17:04:53 2025]
-RUN: /usr/share/launchpad-buildd/bin/in-target update-debian-chroot --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2935651
-Updating target for build SNAPBUILD-2935651
+[Fri Oct 24 15:56:01 2025]
+RUN: /usr/share/launchpad-buildd/bin/in-target update-debian-chroot --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2939880
+Updating target for build SNAPBUILD-2939880
 Hit:1 http://ftpmaster.internal/ubuntu noble InRelease
 Get:2 http://ftpmaster.internal/ubuntu noble-security InRelease [126 kB]
 Get:3 http://ftpmaster.internal/ubuntu noble-updates InRelease [126 kB]
-Get:4 http://ftpmaster.internal/ubuntu noble-security/universe armhf Packages [660 kB]
-Get:5 http://ftpmaster.internal/ubuntu noble-security/universe Translation-en [198 kB]
-Get:6 http://ftpmaster.internal/ubuntu noble-security/main armhf Packages [426 kB]
-Get:7 http://ftpmaster.internal/ubuntu noble-security/main Translation-en [204 kB]
-Get:8 http://ftpmaster.internal/ubuntu noble-security/multiverse armhf Packages [2616 B]
-Get:9 http://ftpmaster.internal/ubuntu noble-security/multiverse Translation-en [5844 B]
-Get:10 http://ftpmaster.internal/ubuntu noble-security/restricted armhf Packages [5236 B]
-Get:11 http://ftpmaster.internal/ubuntu noble-security/restricted Translation-en [450 kB]
-Get:12 http://ftpmaster.internal/ubuntu noble-updates/universe armhf Packages [1100 kB]
-Get:13 http://ftpmaster.internal/ubuntu noble-updates/universe Translation-en [301 kB]
-Get:14 http://ftpmaster.internal/ubuntu noble-updates/main armhf Packages [677 kB]
-Get:15 http://ftpmaster.internal/ubuntu noble-updates/main Translation-en [289 kB]
-Get:16 http://ftpmaster.internal/ubuntu noble-updates/multiverse armhf Packages [3840 B]
-Get:17 http://ftpmaster.internal/ubuntu noble-updates/multiverse Translation-en [5564 B]
+Get:4 http://ftpmaster.internal/ubuntu noble-security/multiverse armhf Packages [2616 B]
+Get:5 http://ftpmaster.internal/ubuntu noble-security/multiverse Translation-en [5708 B]
+Get:6 http://ftpmaster.internal/ubuntu noble-security/main armhf Packages [432 kB]
+Get:7 http://ftpmaster.internal/ubuntu noble-security/main Translation-en [208 kB]
+Get:8 http://ftpmaster.internal/ubuntu noble-security/universe armhf Packages [671 kB]
+Get:9 http://ftpmaster.internal/ubuntu noble-security/universe Translation-en [202 kB]
+Get:10 http://ftpmaster.internal/ubuntu noble-security/restricted armhf Packages [6568 B]
+Get:11 http://ftpmaster.internal/ubuntu noble-security/restricted Translation-en [468 kB]
+Get:12 http://ftpmaster.internal/ubuntu noble-updates/multiverse armhf Packages [3840 B]
+Get:13 http://ftpmaster.internal/ubuntu noble-updates/multiverse Translation-en [5564 B]
+Get:14 http://ftpmaster.internal/ubuntu noble-updates/main armhf Packages [682 kB]
+Get:15 http://ftpmaster.internal/ubuntu noble-updates/main Translation-en [292 kB]
+Get:16 http://ftpmaster.internal/ubuntu noble-updates/universe armhf Packages [1100 kB]
+Get:17 http://ftpmaster.internal/ubuntu noble-updates/universe Translation-en [301 kB]
 Get:18 http://ftpmaster.internal/ubuntu noble-updates/restricted armhf Packages [8452 B]
-Get:19 http://ftpmaster.internal/ubuntu noble-updates/restricted Translation-en [473 kB]
-Fetched 5062 kB in 4s (1302 kB/s)
+Get:19 http://ftpmaster.internal/ubuntu noble-updates/restricted Translation-en [488 kB]
+Fetched 5129 kB in 3s (1476 kB/s)
 Reading package lists...
 Reading package lists...
 Building dependency tree...
@@ -86,17 +86,17 @@ The following packages will be upgraded:
   systemd-sysv tzdata util-linux uuid-runtime xz-utils zlib1g
 121 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 Need to get 90.9 MB of archives.
-After this operation, 3546 kB disk space will be freed.
+After this operation, 3535 kB disk space will be freed.
 Get:1 http://ftpmaster.internal/ubuntu noble-security/main armhf libc6-dev armhf 2.39-0ubuntu8.6 [1352 kB]
 Get:2 http://ftpmaster.internal/ubuntu noble-security/main armhf libc-dev-bin armhf 2.39-0ubuntu8.6 [19.1 kB]
-Get:3 http://ftpmaster.internal/ubuntu noble-security/main armhf linux-libc-dev armhf 6.8.0-85.85 [1879 kB]
+Get:3 http://ftpmaster.internal/ubuntu noble-security/main armhf linux-libc-dev armhf 6.8.0-86.87 [1890 kB]
 Get:4 http://ftpmaster.internal/ubuntu noble-security/main armhf libubsan1 armhf 14.2.0-4ubuntu2~24.04 [1154 kB]
-Get:5 http://ftpmaster.internal/ubuntu noble-security/main armhf libgomp1 armhf 14.2.0-4ubuntu2~24.04 [125 kB]
-Get:6 http://ftpmaster.internal/ubuntu noble-security/main armhf gcc-14-base armhf 14.2.0-4ubuntu2~24.04 [50.8 kB]
-Get:7 http://ftpmaster.internal/ubuntu noble-security/main armhf libgcc-s1 armhf 14.2.0-4ubuntu2~24.04 [41.5 kB]
-Get:8 http://ftpmaster.internal/ubuntu noble-security/main armhf libcc1-0 armhf 14.2.0-4ubuntu2~24.04 [43.4 kB]
-Get:9 http://ftpmaster.internal/ubuntu noble-security/main armhf libatomic1 armhf 14.2.0-4ubuntu2~24.04 [7888 B]
-Get:10 http://ftpmaster.internal/ubuntu noble-security/main armhf libasan8 armhf 14.2.0-4ubuntu2~24.04 [2941 kB]
+Get:5 http://ftpmaster.internal/ubuntu noble-security/main armhf libasan8 armhf 14.2.0-4ubuntu2~24.04 [2941 kB]
+Get:6 http://ftpmaster.internal/ubuntu noble-security/main armhf libgomp1 armhf 14.2.0-4ubuntu2~24.04 [125 kB]
+Get:7 http://ftpmaster.internal/ubuntu noble-security/main armhf gcc-14-base armhf 14.2.0-4ubuntu2~24.04 [50.8 kB]
+Get:8 http://ftpmaster.internal/ubuntu noble-security/main armhf libgcc-s1 armhf 14.2.0-4ubuntu2~24.04 [41.5 kB]
+Get:9 http://ftpmaster.internal/ubuntu noble-security/main armhf libcc1-0 armhf 14.2.0-4ubuntu2~24.04 [43.4 kB]
+Get:10 http://ftpmaster.internal/ubuntu noble-security/main armhf libatomic1 armhf 14.2.0-4ubuntu2~24.04 [7888 B]
 Get:11 http://ftpmaster.internal/ubuntu noble-security/main armhf libstdc++6 armhf 14.2.0-4ubuntu2~24.04 [713 kB]
 Get:12 http://ftpmaster.internal/ubuntu noble-security/main armhf libc6 armhf 2.39-0ubuntu8.6 [2829 kB]
 Get:13 http://ftpmaster.internal/ubuntu noble-updates/main armhf base-files armhf 13ubuntu10.3 [72.9 kB]
@@ -186,19 +186,19 @@ Get:96 http://ftpmaster.internal/ubuntu noble-updates/main armhf bsdextrautils a
 Get:97 http://ftpmaster.internal/ubuntu noble-security/main armhf xz-utils armhf 5.6.1+really5.4.5-1ubuntu0.2 [267 kB]
 Get:98 http://ftpmaster.internal/ubuntu noble-security/main armhf libctf-nobfd0 armhf 2.42-4ubuntu2.5 [88.7 kB]
 Get:99 http://ftpmaster.internal/ubuntu noble-security/main armhf libctf0 armhf 2.42-4ubuntu2.5 [87.7 kB]
-Get:100 http://ftpmaster.internal/ubuntu noble-security/main armhf libsframe1 armhf 2.42-4ubuntu2.5 [13.8 kB]
+Get:100 http://ftpmaster.internal/ubuntu noble-security/main armhf binutils-arm-linux-gnueabihf armhf 2.42-4ubuntu2.5 [2928 kB]
 Get:101 http://ftpmaster.internal/ubuntu noble-security/main armhf libbinutils armhf 2.42-4ubuntu2.5 [459 kB]
-Get:102 http://ftpmaster.internal/ubuntu noble-security/main armhf binutils-common armhf 2.42-4ubuntu2.5 [217 kB]
-Get:103 http://ftpmaster.internal/ubuntu noble-security/main armhf binutils armhf 2.42-4ubuntu2.5 [3078 B]
-Get:104 http://ftpmaster.internal/ubuntu noble-security/main armhf binutils-arm-linux-gnueabihf armhf 2.42-4ubuntu2.5 [2928 kB]
+Get:102 http://ftpmaster.internal/ubuntu noble-security/main armhf binutils armhf 2.42-4ubuntu2.5 [3078 B]
+Get:103 http://ftpmaster.internal/ubuntu noble-security/main armhf binutils-common armhf 2.42-4ubuntu2.5 [217 kB]
+Get:104 http://ftpmaster.internal/ubuntu noble-security/main armhf libsframe1 armhf 2.42-4ubuntu2.5 [13.8 kB]
 Get:105 http://ftpmaster.internal/ubuntu noble-security/main armhf g++-13 armhf 13.3.0-6ubuntu2~24.04 [16.1 kB]
 Get:106 http://ftpmaster.internal/ubuntu noble-security/main armhf g++-13-arm-linux-gnueabihf armhf 13.3.0-6ubuntu2~24.04 [9441 kB]
-Get:107 http://ftpmaster.internal/ubuntu noble-security/main armhf libstdc++-13-dev armhf 13.3.0-6ubuntu2~24.04 [2509 kB]
-Get:108 http://ftpmaster.internal/ubuntu noble-security/main armhf gcc-13 armhf 13.3.0-6ubuntu2~24.04 [465 kB]
-Get:109 http://ftpmaster.internal/ubuntu noble-security/main armhf gcc-13-arm-linux-gnueabihf armhf 13.3.0-6ubuntu2~24.04 [16.1 MB]
+Get:107 http://ftpmaster.internal/ubuntu noble-security/main armhf gcc-13 armhf 13.3.0-6ubuntu2~24.04 [465 kB]
+Get:108 http://ftpmaster.internal/ubuntu noble-security/main armhf gcc-13-arm-linux-gnueabihf armhf 13.3.0-6ubuntu2~24.04 [16.1 MB]
+Get:109 http://ftpmaster.internal/ubuntu noble-security/main armhf libstdc++-13-dev armhf 13.3.0-6ubuntu2~24.04 [2509 kB]
 Get:110 http://ftpmaster.internal/ubuntu noble-security/main armhf libgcc-13-dev armhf 13.3.0-6ubuntu2~24.04 [899 kB]
-Get:111 http://ftpmaster.internal/ubuntu noble-security/main armhf cpp-13 armhf 13.3.0-6ubuntu2~24.04 [1038 B]
-Get:112 http://ftpmaster.internal/ubuntu noble-security/main armhf cpp-13-arm-linux-gnueabihf armhf 13.3.0-6ubuntu2~24.04 [8259 kB]
+Get:111 http://ftpmaster.internal/ubuntu noble-security/main armhf cpp-13-arm-linux-gnueabihf armhf 13.3.0-6ubuntu2~24.04 [8259 kB]
+Get:112 http://ftpmaster.internal/ubuntu noble-security/main armhf cpp-13 armhf 13.3.0-6ubuntu2~24.04 [1038 B]
 Get:113 http://ftpmaster.internal/ubuntu noble-security/main armhf gcc-13-base armhf 13.3.0-6ubuntu2~24.04 [51.4 kB]
 Get:114 http://ftpmaster.internal/ubuntu noble-updates/main armhf libisl23 armhf 0.26-3build1.1 [544 kB]
 Get:115 http://ftpmaster.internal/ubuntu noble-updates/main armhf libmpfr6 armhf 4.2.1-1build1.1 [229 kB]
@@ -209,19 +209,21 @@ Get:119 http://ftpmaster.internal/ubuntu noble-security/main armhf gpg armhf 2.4
 Get:120 http://ftpmaster.internal/ubuntu noble-security/main armhf gpgconf armhf 2.4.4-2ubuntu17.3 [116 kB]
 Get:121 http://ftpmaster.internal/ubuntu noble-security/main armhf gpg-agent armhf 2.4.4-2ubuntu17.3 [235 kB]
 Preconfiguring packages ...
-Fetched 90.9 MB in 44s (2083 kB/s)
+Fetched 90.9 MB in 26s (3524 kB/s)
 (Reading database ... 13535 files and directories currently installed.)
 Preparing to unpack .../0-libc6-dev_2.39-0ubuntu8.6_armhf.deb ...
 Unpacking libc6-dev:armhf (2.39-0ubuntu8.6) over (2.39-0ubuntu8) ...
 Preparing to unpack .../1-libc-dev-bin_2.39-0ubuntu8.6_armhf.deb ...
 Unpacking libc-dev-bin (2.39-0ubuntu8.6) over (2.39-0ubuntu8) ...
-Preparing to unpack .../2-linux-libc-dev_6.8.0-85.85_armhf.deb ...
-Unpacking linux-libc-dev:armhf (6.8.0-85.85) over (6.8.0-31.31) ...
+Preparing to unpack .../2-linux-libc-dev_6.8.0-86.87_armhf.deb ...
+Unpacking linux-libc-dev:armhf (6.8.0-86.87) over (6.8.0-31.31) ...
 Preparing to unpack .../3-libubsan1_14.2.0-4ubuntu2~24.04_armhf.deb ...
 Unpacking libubsan1:armhf (14.2.0-4ubuntu2~24.04) over (14-20240412-0ubuntu1) ...
-Preparing to unpack .../4-libgomp1_14.2.0-4ubuntu2~24.04_armhf.deb ...
+Preparing to unpack .../4-libasan8_14.2.0-4ubuntu2~24.04_armhf.deb ...
+Unpacking libasan8:armhf (14.2.0-4ubuntu2~24.04) over (14-20240412-0ubuntu1) ...
+Preparing to unpack .../5-libgomp1_14.2.0-4ubuntu2~24.04_armhf.deb ...
 Unpacking libgomp1:armhf (14.2.0-4ubuntu2~24.04) over (14-20240412-0ubuntu1) ...
-Preparing to unpack .../5-gcc-14-base_14.2.0-4ubuntu2~24.04_armhf.deb ...
+Preparing to unpack .../6-gcc-14-base_14.2.0-4ubuntu2~24.04_armhf.deb ...
 Unpacking gcc-14-base:armhf (14.2.0-4ubuntu2~24.04) over (14-20240412-0ubuntu1) ...
 Setting up gcc-14-base:armhf (14.2.0-4ubuntu2~24.04) ...
 (Reading database ... 13535 files and directories currently installed.)
@@ -233,8 +235,6 @@ Preparing to unpack .../libcc1-0_14.2.0-4ubuntu2~24.04_armhf.deb ...
 Unpacking libcc1-0:armhf (14.2.0-4ubuntu2~24.04) over (14-20240412-0ubuntu1) ...
 Preparing to unpack .../libatomic1_14.2.0-4ubuntu2~24.04_armhf.deb ...
 Unpacking libatomic1:armhf (14.2.0-4ubuntu2~24.04) over (14-20240412-0ubuntu1) ...
-Preparing to unpack .../libasan8_14.2.0-4ubuntu2~24.04_armhf.deb ...
-Unpacking libasan8:armhf (14.2.0-4ubuntu2~24.04) over (14-20240412-0ubuntu1) ...
 Preparing to unpack .../libstdc++6_14.2.0-4ubuntu2~24.04_armhf.deb ...
 Unpacking libstdc++6:armhf (14.2.0-4ubuntu2~24.04) over (14-20240412-0ubuntu1) ...
 Setting up libstdc++6:armhf (14.2.0-4ubuntu2~24.04) ...
@@ -527,32 +527,32 @@ Preparing to unpack .../09-libctf-nobfd0_2.42-4ubuntu2.5_armhf.deb ...
 Unpacking libctf-nobfd0:armhf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
 Preparing to unpack .../10-libctf0_2.42-4ubuntu2.5_armhf.deb ...
 Unpacking libctf0:armhf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
-Preparing to unpack .../11-libsframe1_2.42-4ubuntu2.5_armhf.deb ...
-Unpacking libsframe1:armhf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
+Preparing to unpack .../11-binutils-arm-linux-gnueabihf_2.42-4ubuntu2.5_armhf.deb ...
+Unpacking binutils-arm-linux-gnueabihf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
 Preparing to unpack .../12-libbinutils_2.42-4ubuntu2.5_armhf.deb ...
 Unpacking libbinutils:armhf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
-Preparing to unpack .../13-binutils-common_2.42-4ubuntu2.5_armhf.deb ...
-Unpacking binutils-common:armhf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
-Preparing to unpack .../14-binutils_2.42-4ubuntu2.5_armhf.deb ...
+Preparing to unpack .../13-binutils_2.42-4ubuntu2.5_armhf.deb ...
 Unpacking binutils (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
-Preparing to unpack .../15-binutils-arm-linux-gnueabihf_2.42-4ubuntu2.5_armhf.deb ...
-Unpacking binutils-arm-linux-gnueabihf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
+Preparing to unpack .../14-binutils-common_2.42-4ubuntu2.5_armhf.deb ...
+Unpacking binutils-common:armhf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
+Preparing to unpack .../15-libsframe1_2.42-4ubuntu2.5_armhf.deb ...
+Unpacking libsframe1:armhf (2.42-4ubuntu2.5) over (2.42-4ubuntu2) ...
 Preparing to unpack .../16-g++-13_13.3.0-6ubuntu2~24.04_armhf.deb ...
 Unpacking g++-13 (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
 Preparing to unpack .../17-g++-13-arm-linux-gnueabihf_13.3.0-6ubuntu2~24.04_armhf.deb ...
 Unpacking g++-13-arm-linux-gnueabihf (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
-Preparing to unpack .../18-libstdc++-13-dev_13.3.0-6ubuntu2~24.04_armhf.deb ...
-Unpacking libstdc++-13-dev:armhf (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
-Preparing to unpack .../19-gcc-13_13.3.0-6ubuntu2~24.04_armhf.deb ...
+Preparing to unpack .../18-gcc-13_13.3.0-6ubuntu2~24.04_armhf.deb ...
 Unpacking gcc-13 (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
-Preparing to unpack .../20-gcc-13-arm-linux-gnueabihf_13.3.0-6ubuntu2~24.04_armhf.deb ...
+Preparing to unpack .../19-gcc-13-arm-linux-gnueabihf_13.3.0-6ubuntu2~24.04_armhf.deb ...
 Unpacking gcc-13-arm-linux-gnueabihf (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
+Preparing to unpack .../20-libstdc++-13-dev_13.3.0-6ubuntu2~24.04_armhf.deb ...
+Unpacking libstdc++-13-dev:armhf (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
 Preparing to unpack .../21-libgcc-13-dev_13.3.0-6ubuntu2~24.04_armhf.deb ...
 Unpacking libgcc-13-dev:armhf (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
-Preparing to unpack .../22-cpp-13_13.3.0-6ubuntu2~24.04_armhf.deb ...
-Unpacking cpp-13 (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
-Preparing to unpack .../23-cpp-13-arm-linux-gnueabihf_13.3.0-6ubuntu2~24.04_armhf.deb ...
+Preparing to unpack .../22-cpp-13-arm-linux-gnueabihf_13.3.0-6ubuntu2~24.04_armhf.deb ...
 Unpacking cpp-13-arm-linux-gnueabihf (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
+Preparing to unpack .../23-cpp-13_13.3.0-6ubuntu2~24.04_armhf.deb ...
+Unpacking cpp-13 (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
 Preparing to unpack .../24-gcc-13-base_13.3.0-6ubuntu2~24.04_armhf.deb ...
 Unpacking gcc-13-base:armhf (13.3.0-6ubuntu2~24.04) over (13.2.0-23ubuntu4) ...
 Preparing to unpack .../25-libisl23_0.26-3build1.1_armhf.deb ...
@@ -577,7 +577,7 @@ Setting up apt-utils (2.8.3) ...
 Setting up bsdextrautils (2.39.3-9ubuntu6.3) ...
 Setting up libsqlite3-0:armhf (3.45.1-1ubuntu2.5) ...
 Setting up binutils-common:armhf (2.42-4ubuntu2.5) ...
-Setting up linux-libc-dev:armhf (6.8.0-85.85) ...
+Setting up linux-libc-dev:armhf (6.8.0-86.87) ...
 Setting up libctf-nobfd0:armhf (2.42-4ubuntu2.5) ...
 Setting up systemd-dev (255.4-1ubuntu8.11) ...
 Setting up libcom-err2:armhf (1.47.0-2.4~exp1ubuntu4.1) ...
@@ -587,8 +587,8 @@ Setting up libsframe1:armhf (2.42-4ubuntu2.5) ...
 Setting up tzdata (2025b-0ubuntu0.24.04.1) ...
 
 Current default time zone: 'Etc/UTC'
-Local time is now:      Mon Oct 20 17:06:21 UTC 2025.
-Universal Time is now:  Mon Oct 20 17:06:21 UTC 2025.
+Local time is now:      Fri Oct 24 15:56:51 UTC 2025.
+Universal Time is now:  Fri Oct 24 15:56:51 UTC 2025.
 Run 'dpkg-reconfigure tzdata' if you wish to change it.
 
 Setting up gcc-13-base:armhf (13.3.0-6ubuntu2~24.04) ...
@@ -653,8 +653,8 @@ Setting up g++-13-arm-linux-gnueabihf (13.3.0-6ubuntu2~24.04) ...
 Setting up g++-13 (13.3.0-6ubuntu2~24.04) ...
 Setting up systemd-sysv (255.4-1ubuntu8.11) ...
 Processing triggers for libc-bin (2.39-0ubuntu8.6) ...
-[Mon Oct 20 17:06:28 2025]
-RUN: /usr/share/launchpad-buildd/bin/in-target buildsnap --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2935651 --channel snapcraft=stable/launchpad-buildd --build-request-id 102634715 --build-request-timestamp 2025-10-20T17:03:16Z --build-url 'https://launchpad.net/~tom-tom-tom/tom-tom-tom-craft-remote-build/+snap/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06/+build/2935651' --proxy-url http://10.10.10.1:8222/ --revocation-endpoint http://builder-proxy-auth.lp.internal:8080/tokens/SNAPBUILD-2935651-1760979799 --git-repository 'https://git.launchpad.net/~tom-tom-tom/tom-tom-tom-craft-remote-build/+git/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06' --git-path main --target-arch armhf --launchpad-instance production --launchpad-server-url launchpad.net --craft-platform armhf snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06
+[Fri Oct 24 15:56:54 2025]
+RUN: /usr/share/launchpad-buildd/bin/in-target buildsnap --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2939880 --channel snapcraft=stable/launchpad-buildd --build-request-id 102755928 --build-request-timestamp 2025-10-24T15:54:59Z --build-url 'https://launchpad.net/~tom-tom-tom/tom-tom-tom-craft-remote-build/+snap/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/+build/2939880' --proxy-url http://10.10.10.1:8222/ --revocation-endpoint http://builder-proxy-auth.lp.internal:8080/tokens/SNAPBUILD-2939880-1761321306 --git-repository 'https://git.launchpad.net/~tom-tom-tom/tom-tom-tom-craft-remote-build/+git/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4' --git-path main --target-arch armhf --launchpad-instance production --launchpad-server-url launchpad.net --craft-platform armhf snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4
 Running install phase...
 /usr/lib/python3/dist-packages/pylxd/models/_model.py:134: UserWarning: Attempted to set unknown attribute "type" on instance of "Container"
   warnings.warn(
@@ -741,7 +741,7 @@ Get:45 http://ftpmaster.internal/ubuntu noble-updates/main armhf snapd armhf 2.7
 Get:46 http://ftpmaster.internal/ubuntu noble/universe armhf squashfuse armhf 0.5.0-2build1 [24.2 kB]
 Get:47 http://ftpmaster.internal/ubuntu noble/main armhf socat armhf 1.8.0.0-4build3 [359 kB]
 Preconfiguring packages ...
-Fetched 44.9 MB in 5s (9723 kB/s)
+Fetched 44.9 MB in 11s (4136 kB/s)
 Selecting previously unselected package libpython3.12-minimal:armhf.
 (Reading database ... 13541 files and directories currently installed.)
 Preparing to unpack .../libpython3.12-minimal_3.12.3-1ubuntu0.8_armhf.deb ...
@@ -960,22 +960,39 @@ snapd.snap-repair.service is a disabled or a static unit, not starting it.
 Processing triggers for systemd (255.4-1ubuntu8.11) ...
 Processing triggers for dbus (1.14.10-4ubuntu4.1) ...
 Processing triggers for libc-bin (2.39-0ubuntu8.6) ...
-2025-10-20T17:12:10Z INFO Waiting for automatic snapd restart...
+2025-10-24T16:01:58Z INFO Waiting for automatic snapd restart...
 snapcraft 8.12.0 from Canonical** installed
 Running repo phase...
-Cloning into 'snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06'...
-[20/Oct/2025:17:21:54 +0000] "CONNECT git.launchpad.net:443 HTTP/1.1" 200 3012451 "-" "git/2.43.0"
+Cloning into 'snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4'...
+[24/Oct/2025:16:05:52 +0000] "CONNECT git.launchpad.net:443 HTTP/1.1" 200 3027824 "-" "git/2.43.0"
 Running pull phase...
 Initialising lifecycle
 Installing build-packages
-[20/Oct/2025:17:22:14 +0000] "GET http://ftpmaster.internal/ubuntu/dists/noble/InRelease HTTP/1.1" 304 - "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
-[20/Oct/2025:17:22:14 +0000] "GET http://ftpmaster.internal/ubuntu/dists/noble-security/InRelease HTTP/1.1" 304 - "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
-[20/Oct/2025:17:22:14 +0000] "GET http://ftpmaster.internal/ubuntu/dists/noble-updates/InRelease HTTP/1.1" 304 - "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
-[20/Oct/2025:17:22:19 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/c/curl/libcurl4t64_8.5.0-2ubuntu10.6_armhf.deb HTTP/1.1" 200 297046 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
-[20/Oct/2025:17:22:20 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/c/curl/curl_8.5.0-2ubuntu10.6_armhf.deb HTTP/1.1" 200 218744 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:03 +0000] "GET http://ftpmaster.internal/ubuntu/dists/noble/InRelease HTTP/1.1" 304 - "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:03 +0000] "GET http://ftpmaster.internal/ubuntu/dists/noble-security/InRelease HTTP/1.1" 304 - "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:03 +0000] "GET http://ftpmaster.internal/ubuntu/dists/noble-updates/InRelease HTTP/1.1" 304 - "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:06 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/s/setuptools/python3-pkg-resources_68.1.2-2ubuntu1.2_all.deb HTTP/1.1" 200 167914 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:06 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/c/curl/libcurl4t64_8.5.0-2ubuntu10.6_armhf.deb HTTP/1.1" 200 297046 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:06 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/c/curl/curl_8.5.0-2ubuntu10.6_armhf.deb HTTP/1.1" 200 218744 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:07 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/p/pkgconf/libpkgconf3_1.8.1-2build1_armhf.deb HTTP/1.1" 200 26338 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:07 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/s/sqlite3/libsqlite3-dev_3.45.1-1ubuntu2.5_armhf.deb HTTP/1.1" 200 816468 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:07 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/p/pkgconf/pkgconf-bin_1.8.1-2build1_armhf.deb HTTP/1.1" 200 20712 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:08 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/p/pkgconf/pkgconf_1.8.1-2build1_armhf.deb HTTP/1.1" 200 16770 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:08 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/p/pkgconf/pkg-config_1.8.1-2build1_armhf.deb HTTP/1.1" 200 7264 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:08 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/s/setuptools/python3-setuptools_68.1.2-2ubuntu1.2_all.deb HTTP/1.1" 200 396614 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:08 +0000] "GET http://ftpmaster.internal/ubuntu/pool/universe/w/wheel/python3-wheel_0.42.0-2_all.deb HTTP/1.1" 200 53052 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+[24/Oct/2025:16:06:09 +0000] "GET http://ftpmaster.internal/ubuntu/pool/universe/p/python-pip/python3-pip_24.0%2bdfsg-1ubuntu1.3_all.deb HTTP/1.1" 200 1319940 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
 Installing build-snaps
 Pulling frontend
 Pulling backend
+Fetching stage-packages
+Downloading package: libatomic1
+[24/Oct/2025:16:23:46 +0000] "GET http://ftpmaster.internal/ubuntu/pool/main/g/gcc-14/libatomic1_14.2.0-4ubuntu2%7e24.04_armhf.deb HTTP/1.1" 200 7888 "-" "Debian APT-HTTP/1.3 (2.8.3) non-interactive"
+/snap/snapcraft/15953/lib/python3.12/site-packages/apt/package.py:810: Warning: W:Download is performed unsandboxed as root as file '/root/.cache/snapcraft/download/libatomic1_14.2.0-4ubuntu2~24.04_armhf.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
+  acq.run()
+Extracting stage package: libatomic1
+Pulling electron-app
+Pulling gnome/sdk
 Running build phase...
 Running snapcraft without a command will not be possible in future releases. Use 'snapcraft pack' instead.
 Initialising lifecycle
@@ -983,43 +1000,43 @@ Installing build-packages
 Installing build-snaps
 Skipping pull for frontend (already ran)
 Skipping pull for backend (already ran)
+Skipping pull for electron-app (already ran)
+Skipping pull for gnome/sdk (already ran)
 Building frontend
-:: + export CYPRESS_INSTALL_BINARY=0
-:: + CYPRESS_INSTALL_BINARY=0
 :: + npm run setup:frontend
 ::
 :: > my-electron-app@1.0.0 setup:frontend
 :: > cd frontend && npm install
 ::
 ::
-:: added 369 packages, and audited 370 packages in 57s
+:: added 213 packages, and audited 214 packages in 34s
 ::
-:: 106 packages are looking for funding
+:: 59 packages are looking for funding
 ::   run `npm fund` for details
 ::
 :: found 0 vulnerabilities
 :: npm notice
-:: npm notice New major version of npm available! 10.9.3 -> 11.6.2
+:: npm notice New major version of npm available! 10.9.4 -> 11.6.2
 :: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
 :: npm notice To update run: npm install -g npm@11.6.2
 :: npm notice
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 8486189 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1232554 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1775166 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 606373 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 2430896 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 764421 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 2950637 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 22505627 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 2958929 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 4598088 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 4650093 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 998274 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 3412802 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 3257888 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 4177047 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 4554271 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 357588 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1075645 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 8183386 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 978595 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 19898554 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 2016983 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 4254423 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 2332279 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 205637 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1275971 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 2666834 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1419178 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1835253 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 4132641 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
 :: + npm run build:frontend
-[20/Oct/2025:17:33:04 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 290934 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
+[24/Oct/2025:16:24:35 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 291306 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
 ::
 :: > my-electron-app@1.0.0 build:frontend
 :: > cd frontend && npm run build
@@ -1028,7 +1045,7 @@ Building frontend
 :: > vue-app-test@0.0.0 build
 :: > vite build
 ::
-:: vite v7.1.11 building for production...
+:: vite v7.1.12 building for production...
 :: transforming...
 :: ✓ 635 modules transformed.
 :: rendering chunks...
@@ -1042,16 +1059,16 @@ Building frontend
 :: dist/assets/materialdesignicons-webfont-PXm3-2wK.woff     587.98 kB
 :: dist/assets/materialdesignicons-webfont-B7mPwVP_.ttf    1,307.66 kB
 :: dist/assets/materialdesignicons-webfont-CSr8KVlo.eot    1,307.88 kB
-:: dist/assets/index-ClI5UrMX.css                            804.61 kB │ gzip: 112.99 kB
-:: dist/assets/index-CnppzZoE.js                             644.13 kB │ gzip: 210.05 kB
+:: dist/assets/index-CegAT1oA.css                            806.45 kB │ gzip: 113.18 kB
+:: dist/assets/index-BppgPuHY.js                             645.94 kB │ gzip: 210.69 kB
 ::
 :: (!) Some chunks are larger than 500 kB after minification. Consider:
 :: - Using dynamic import() to code-split the application
 :: - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 :: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-:: ✓ built in 10.66s
-:: + mkdir -p /build/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06/parts/frontend/install/frontend/dist
-:: + cp -r frontend/dist/assets frontend/dist/index.html frontend/dist/vite.svg /build/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06/parts/frontend/install/frontend/dist/
+:: ✓ built in 7.10s
+:: + mkdir -p /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/frontend/install/frontend/dist
+:: + cp -r frontend/dist/assets frontend/dist/index.html frontend/dist/vite.svg /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/frontend/install/frontend/dist/
 Skipping pull for frontend (already ran)
 Skipping build for frontend (already ran)
 Staging frontend (required to build 'backend')
@@ -1065,50 +1082,104 @@ Building backend
 :: npm warn deprecated npmlog@6.0.2: This package is no longer supported.
 :: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 :: npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
-:: npm warn deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs
-:: npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
 :: npm warn deprecated gauge@4.0.4: This package is no longer supported.
-[20/Oct/2025:17:33:30 +0000] "CONNECT github.com:443 HTTP/1.1" 200 4421 "-" "-"
-[20/Oct/2025:17:33:32 +0000] "CONNECT nodejs.org:443 HTTP/1.1" 200 10223167 "-" "-"
-[20/Oct/2025:17:33:36 +0000] "CONNECT nodejs.org:443 HTTP/1.1" 200 9471 "-" "-"
-:: npm error code 1
-:: npm error path /build/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06/parts/backend/build/backend/node_modules/sqlite3
-:: npm error command failed
-:: npm error command sh -c prebuild-install -r napi || node-gyp rebuild
-:: npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-20T17_33_22_687Z-debug-0.log
-'override-build' in part 'backend' failed with code 1.
-Detailed information: 
-:: + npm run setup:backend
-:: npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
-:: npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+:: npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+:: npm warn deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs
+[24/Oct/2025:16:24:54 +0000] "CONNECT github.com:443 HTTP/1.1" 200 4441 "-" "-"
+[24/Oct/2025:16:24:57 +0000] "CONNECT nodejs.org:443 HTTP/1.1" 200 10206505 "-" "-"
+[24/Oct/2025:16:24:59 +0000] "CONNECT nodejs.org:443 HTTP/1.1" 200 9477 "-" "-"
+::
+:: added 201 packages, and audited 202 packages in 2m
+::
+:: 28 packages are looking for funding
+::   run `npm fund` for details
+::
+:: found 0 vulnerabilities
+:: + mkdir -p /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/install/backend/public
+:: + cp -r ./backend/babel.config.js ./backend/command.sh ./backend/deconz-webserver-api.postman_collection.json ./backend/eslint.config.js ./backend/middleware ./backend/node_modules ./backend/package-lock.json ./backend/package.json ./backend/readme.md ./backend/src /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/install/backend/
+:: + cp -r /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/assets /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/index.html /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/vite.svg /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/install/backend/public
+:: + craftctl default
+:: + '[' '!' -f /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/cache/node-v22.19.0-linux-armv7l.tar.gz ']'
+:: + mkdir -p /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/cache
+:: + curl --retry 5 -s https://nodejs.org/dist/v22.19.0/SHASUMS256.txt -o /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/cache/SHASUMS256.txt
+[24/Oct/2025:16:27:13 +0000] "CONNECT nodejs.org:443 HTTP/1.1" 200 17183 "-" "-"
+:: + curl --retry 5 -s https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-armv7l.tar.gz -o /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/cache/node-v22.19.0-linux-armv7l.tar.gz
+[24/Oct/2025:16:27:14 +0000] "CONNECT nodejs.org:443 HTTP/1.1" 200 10346 "-" "curl/8.5.0"
+:: + pushd /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/cache
+:: + sha256sum --ignore-missing --strict -c SHASUMS256.txt
+:: /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/cache /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/build
+:: node-v22.19.0-linux-armv7l.tar.gz: OK
+:: + popd
+:: + tar -xzf /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/cache/node-v22.19.0-linux-armv7l.tar.gz -C /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/install/ --no-same-owner --strip-components=1
+:: /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/build
+[24/Oct/2025:16:27:22 +0000] "CONNECT nodejs.org:443 HTTP/1.1" 200 49892067 "-" "curl/8.5.0"
+:: ++ npm --version
+:: + NPM_VERSION=10.9.3
+:: + (( 10>=10 ))
+:: + npm install -g --prefix /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/install --install-links /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/backend/build
+::
+:: added 94 packages in 6s
+::
+:: 27 packages are looking for funding
+::   run `npm fund` for details
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 60092 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 202129 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 14868 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 345808 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 233999 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 9629 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 316068 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 174788 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 10156 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 262406 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 12383 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 517538 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 6930 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 19592 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:29 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 6145 "-" "npm/10.9.3 node/v22.19.0 linux arm workspaces/false"
+Building electron-app
+:: + mkdir -p /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/electron-app/build/frontend/dist
+:: + cp -r /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/assets /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/index.html /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/vite.svg /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/electron-app/build/frontend/dist
+:: + npm install
 :: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 :: npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
-:: npm warn deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs
-:: npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
-:: npm warn deprecated gauge@4.0.4: This package is no longer supported.
+:: npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 :: npm error code 1
-:: npm error path /build/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06/parts/backend/build/backend/node_modules/sqlite3
+:: npm error path /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/electron-app/build/node_modules/electron
 :: npm error command failed
-:: npm error command sh -c prebuild-install -r napi || node-gyp rebuild
-:: npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-20T17_33_22_687Z-debug-0.log
+:: npm error command sh -c node install.js
+:: npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-24T16_27_31_766Z-debug-0.log
+'override-build' in part 'electron-app' failed with code 1.
+Detailed information: 
+:: + mkdir -p /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/electron-app/build/frontend/dist
+:: + cp -r /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/assets /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/index.html /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/stage/frontend/dist/vite.svg /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/electron-app/build/frontend/dist
+:: + npm install
+:: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+:: npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+:: npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+:: npm error code 1
+:: npm error path /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/parts/electron-app/build/node_modules/electron
+:: npm error command failed
+:: npm error command sh -c node install.js
+:: npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-24T16_27_31_766Z-debug-0.log
 Recommended resolution: Review the scriptlet and make sure it's correct.
 For more information, check out: https://documentation.ubuntu.com/snapcraft/8.12.0/reference/plugins/
-Full execution log: '/root/.local/state/snapcraft/log/snapcraft-20251020-173156.864461.log'
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 76779 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 75708 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 3258001 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 135528 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 258480 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 524527 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 82681 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 279277 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 165089 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 86659 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 97366 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 142130 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 55059 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 55666 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
-[20/Oct/2025:17:33:37 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 599626 "-" "npm/10.9.3 node/v22.20.0 linux arm workspaces/false"
+Full execution log: '/root/.local/state/snapcraft/log/snapcraft-20251024-162354.828124.log'
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 489756 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 4422052 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1611500 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 45348073 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1103189 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 583754 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 428820 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 767574 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 600256 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 547154 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1695271 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 153080 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 5962276 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 1025412 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
+[24/Oct/2025:16:27:56 +0000] "CONNECT registry.npmjs.org:443 HTTP/1.1" 200 4972515 "-" "npm/10.9.4 node/v22.21.0 linux arm workspaces/false"
 Build failed
 Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/lpbuildd/target/build_snap.py", line 309, in run
@@ -1122,8 +1193,8 @@ Traceback (most recent call last):
     subprocess.check_call(cmd, **kwargs)
   File "/usr/lib/python3.12/subprocess.py", line 413, in check_call
     raise CalledProcessError(retcode, cmd)
-subprocess.CalledProcessError: Command '['lxc', 'exec', 'lp-noble-armhf', '--env', 'LANG=C.UTF-8', '--env', 'SHELL=/bin/sh', '--env', 'http_proxy=http://10.10.10.1:8222/', '--env', 'https_proxy=http://10.10.10.1:8222/', '--env', 'HTTP_PROXY=http://10.10.10.1:8222/', '--env', 'HTTPS_PROXY=http://10.10.10.1:8222/', '--env', 'GIT_PROXY_COMMAND=/usr/local/bin/lpbuildd-git-proxy', '--env', 'SNAPPY_STORE_NO_CDN=1', '--env', 'LAUNCHPAD_INSTANCE=production', '--env', 'LAUNCHPAD_SERVER_URL=launchpad.net', '--env', 'SNAPCRAFT_BUILD_INFO=1', '--env', 'SNAPCRAFT_IMAGE_INFO={"build-request-id": "lp-102634715", "build-request-timestamp": "2025-10-20T17:03:16Z", "build_url": "https://launchpad.net/~tom-tom-tom/tom-tom-tom-craft-remote-build/+snap/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06/+build/2935651"}', '--env', 'SNAPCRAFT_BUILD_ENVIRONMENT=host', '--env', 'SNAPCRAFT_BUILD_FOR=armhf', '--env', 'CRAFT_PLATFORM=armhf', '--', '/bin/sh', '-c', 'cd /build/snapcraft-deconz-webserver-1e3c3683a9d220d765d3e851358eee06 && linux32 snapcraft']' returned non-zero exit status 1.
+subprocess.CalledProcessError: Command '['lxc', 'exec', 'lp-noble-armhf', '--env', 'LANG=C.UTF-8', '--env', 'SHELL=/bin/sh', '--env', 'http_proxy=http://10.10.10.1:8222/', '--env', 'https_proxy=http://10.10.10.1:8222/', '--env', 'HTTP_PROXY=http://10.10.10.1:8222/', '--env', 'HTTPS_PROXY=http://10.10.10.1:8222/', '--env', 'GIT_PROXY_COMMAND=/usr/local/bin/lpbuildd-git-proxy', '--env', 'SNAPPY_STORE_NO_CDN=1', '--env', 'LAUNCHPAD_INSTANCE=production', '--env', 'LAUNCHPAD_SERVER_URL=launchpad.net', '--env', 'SNAPCRAFT_BUILD_INFO=1', '--env', 'SNAPCRAFT_IMAGE_INFO={"build-request-id": "lp-102755928", "build-request-timestamp": "2025-10-24T15:54:59Z", "build_url": "https://launchpad.net/~tom-tom-tom/tom-tom-tom-craft-remote-build/+snap/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4/+build/2939880"}', '--env', 'SNAPCRAFT_BUILD_ENVIRONMENT=host', '--env', 'SNAPCRAFT_BUILD_FOR=armhf', '--env', 'CRAFT_PLATFORM=armhf', '--', '/bin/sh', '-c', 'cd /build/snapcraft-deconz-webserver-ffc2425c25226c63dbf1391fa8cbd5d4 && linux32 snapcraft']' returned non-zero exit status 1.
 Revoking proxy token...
-[Mon Oct 20 17:33:39 2025]
-RUN: /usr/share/launchpad-buildd/bin/in-target scan-for-processes --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2935651
-Scanning for processes to kill in build SNAPBUILD-2935651
+[Fri Oct 24 16:27:57 2025]
+RUN: /usr/share/launchpad-buildd/bin/in-target scan-for-processes --backend=lxd --series=noble --abi-tag=armhf --isa-tag=armhf SNAPBUILD-2939880
+Scanning for processes to kill in build SNAPBUILD-2939880

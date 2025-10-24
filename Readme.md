@@ -49,3 +49,8 @@ Hint: The container configuration lies under: /var/lib/lxc/armhf01/config
 
 sudo apt-get -o Acquire::ForceIPv4=true -o Acquire::Retries=3 update
 sudo apt-get -o Acquire::ForceIPv4=true -o Acquire::Retries=3 upgrade -y
+
+
+# Copy things into container:
+
+tar czf - deconz-webserver | sudo lxc-attach -n armhf01 -- tar xzf - -C /home/ubuntu
