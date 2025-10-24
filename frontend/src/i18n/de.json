@@ -6,5 +6,9 @@
   "register": "Registrieren",
   "lights": "Lichter",
   "on": "An",
-  "off": "Aus"
+  "off": "Aus",
+  "Devices": "Geräte",
+  "Choose a device": "Wähle ein Gerät aus",
+  "Choose an action": "Wähle eine Aktion aus",
+  "Choose a condition": "Wähle eine Bedingung aus"
 }

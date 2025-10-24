@@ -1,18 +1,21 @@
 <script setup>
-  import { reactive, ref } from 'vue';
-  import { useLightsStore } from '../stores/deconz-store';
-  import { storeToRefs } from 'pinia';
+  import { useRouter } from 'vue-router'
 
-  const lightsStore = useLightsStore();
-  const { lights, loading, error } = storeToRefs(lightsStore);
+  const router = useRouter()
 
-  const hoverStates = reactive({});
+  function goToAddView() {
+    router.push({ name: 'AutomationAdd' })
+  }
 </script>
 
 <template>
   <v-app>
     <v-main class="d-flex align-center justify-center" style="height: 600px">
-      <v-container></v-container>
+      <v-container>
+        <v-btn icon @click="goToAddView">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+      </v-container>
     </v-main>
   </v-app>
 </template>

@@ -16,10 +16,9 @@ platforms:
     build-on: [amd64]
     build-for: [amd64]
 
-# platforms:
-#   armhf:
-#     build-on: [armhf]
-#     build-for: [armhf]
+  armhf:
+    build-on: [armhf]
+    build-for: [armhf]
 
 apps:
   deconz-webserver:
@@ -29,21 +28,16 @@ apps:
     plugs:
       - network-bind
 
-  my-electron-app:
-    command: electron/command.sh
-    extensions: [gnome] 
-    plugs:
-      - browser-support
-      - network-bind
-      - home
-      - unity7
-      - opengl
-      - bluez
-    # environment:
-    #   DISABLE_WAYLAND: '1'
-    #   PATH: $SNAP/usr/sbin:$SNAP/usr/bin:$SNAP/sbin:$SNAP/bin:$PATH
-    #   SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform
-    #   LD_LIBRARY_PATH: $SNAP_LIBRARY_PATH:$SNAP/lib:$SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH:$SNAP/lib:$SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu
+  # my-electron-app:
+  #   command: electron/command.sh
+  #   extensions: [gnome] 
+  #   plugs:
+  #     - browser-support
+  #     - network-bind
+  #     - home
+  #     - unity7
+  #     - opengl
+  #     - bluez
 
 parts:
   frontend:
@@ -52,6 +46,8 @@ parts:
     build-snaps:
       - node/22/stable
     override-build: |
+      export CYPRESS_INSTALL_BINARY=0  # armhf does have an issue with cypress. So we can prevent it from being installed ..
+
       npm run setup:frontend
       npm run build:frontend
 
@@ -86,27 +82,27 @@ parts:
       craftctl default
 
 
-  electron-app:
-    plugin: nil
-    source: .
-    after: [frontend]
-    build-snaps:
-      - node/22/stable
-    override-build: |
-      # export PATH=/snap/bin:$PATH
+  # electron-app:
+  #   plugin: nil
+  #   source: .
+  #   after: [frontend]
+  #   build-snaps:
+  #     - node/22/stable
+  #   override-build: |
+  #     # export PATH=/snap/bin:$PATH
 
-      # Accoring to package.json (electron build section) the electron app tries to get frontend
-      # from frontend/dist folder (relatively to where package.json lies)
-      mkdir -p $CRAFT_PART_BUILD/frontend/dist
-      cp -r $SNAPCRAFT_STAGE/frontend/dist/* $CRAFT_PART_BUILD/frontend/dist
+  #     # Accoring to package.json (electron build section) the electron app tries to get frontend
+  #     # from frontend/dist folder (relatively to where package.json lies)
+  #     mkdir -p $CRAFT_PART_BUILD/frontend/dist
+  #     cp -r $SNAPCRAFT_STAGE/frontend/dist/* $CRAFT_PART_BUILD/frontend/dist
 
-      # Install and build
-      npm install
-      npm run build:electron
+  #     # Install and build
+  #     npm install
+  #     npm run build:electron
 
-      # Copy output to $SNAPCRAFT_PART_INSTALL
-      mkdir $SNAPCRAFT_PART_INSTALL/electron
-      cp -r ./dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/electron/
+  #     # Copy output to $SNAPCRAFT_PART_INSTALL
+  #     mkdir $SNAPCRAFT_PART_INSTALL/electron
+  #     cp -r ./dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/electron/
 
-      # Copy the shellscripts
-      cp -r ./electron/command-shellscripts/* $SNAPCRAFT_PART_INSTALL/electron/
+  #     # Copy the shellscripts
+  #     cp -r ./electron/command-shellscripts/* $SNAPCRAFT_PART_INSTALL/electron/

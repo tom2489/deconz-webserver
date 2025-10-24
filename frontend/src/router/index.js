@@ -6,6 +6,7 @@ import AboutView from '@/views/AboutView.vue';
 import LoginView from '@/views/LoginView.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import AutomationView from '@/views/AutomationView.vue';
+import AutomationAddView from '@/views/AutomationAddView.vue';
 import SettingsDeconzApiKeyView from '@/views/SettingsDeconzApiKeyView.vue';
 import SettingsUserManagementView from '@/views/SettingsUserManagementView.vue';
 
@@ -40,6 +41,12 @@ const routes = [
     path: '/automation',
     name: 'Automation',
     component: AutomationView,
+    meta: { title: 'Automation' },
+  },
+    {
+    path: '/automation-add',
+    name: 'AutomationAdd',
+    component: AutomationAddView,
     meta: { title: 'Automation' },
   },
   {

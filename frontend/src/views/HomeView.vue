@@ -56,7 +56,12 @@
               <v-card-title>{{ t('lights') }}</v-card-title>
               <v-list>
                 <v-list-item
-                  v-for="(light, id) in lights.filter(l => l.type === 'On/Off light' || l.type === 'Extended color light' || l.type === 'Color dimmable light')"
+                  v-for="(light, id) in lights.filter(
+                    (l) =>
+                      l.type === 'On/Off light' ||
+                      l.type === 'Extended color light' ||
+                      l.type === 'Color dimmable light'
+                  )"
                   :key="id"
                   class="align-center"
                   @click="lightsStore.toggleLight(light.id)"

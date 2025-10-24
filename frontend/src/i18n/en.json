@@ -6,5 +6,9 @@
   "register": "Register",
   "lights": "Lights",
   "on": "On",
-  "off": "Off"
+  "off": "Off",
+  "Devices": "Devices",
+  "Choose a device": "Choose a device",
+  "Choose an action": "Choose an action",
+  "Choose a condition": "Choose a condition"
 }
