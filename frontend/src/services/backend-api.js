@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+const defaultHost = window.location.hostname; // this will give machine IP if accessed via IP
+const backendPort = 3000;
+const backendUrl = import.meta.env.VITE_BACKEND_URL || `http://${defaultHost}:${backendPort}`;
 
 const backendApi = axios.create({
   baseURL: backendUrl,

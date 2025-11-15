@@ -24,33 +24,6 @@ You can unsquash the snap in order to analyze whats going on:
 
 sudo snappy-debug security scanlog
 
+YOU CAN ONLY LOCALLY SNAPCRAFT WHEN UFW IS DISABLED .. DO NOT FORGET TO ENABLE IT AFTERWARDS !
+
 snapcraft remote-build --build-for=armhf
-
-
-# Creating an lxc container with armhf (armv7l)
-
-
-IMPORTANT: For now internet connection inside armhf01 is not workin when ufw is enabled. So you can temporarily disable ufw.
-
-
-sudo lxc-create -n armhf01 -t download -- -d ubuntu -r jammy -a armhf
-
-lxc image list
-
-sudo lxc-info -n armhf01
-sudo lxc-ls
-
-sudo lxc-start -n armhf01
-sudo lxc-attach -n armhf01
-
-sudo lxc-destroy -n armhf01
-
-Hint: The container configuration lies under: /var/lib/lxc/armhf01/config
-
-sudo apt-get -o Acquire::ForceIPv4=true -o Acquire::Retries=3 update
-sudo apt-get -o Acquire::ForceIPv4=true -o Acquire::Retries=3 upgrade -y
-
-
-# Copy things into container:
-
-tar czf - deconz-webserver | sudo lxc-attach -n armhf01 -- tar xzf - -C /home/ubuntu
